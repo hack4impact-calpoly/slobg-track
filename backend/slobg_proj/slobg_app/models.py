@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.utils.timezone import now as djnow
 
 # Create your models here.
 
@@ -25,3 +26,9 @@ class Volunteer(models.Model):
 	
 	def __str__(self):
 		return "Username: {}, Email: {}".format(self.username, self.email)
+
+class VolunteerForm(models.Model):
+	activity = models.CharField(max_length=256, blank=False)
+	hours = models.FloatField(blank=False)
+	date = models.DateTimeField(default=djnow)
+

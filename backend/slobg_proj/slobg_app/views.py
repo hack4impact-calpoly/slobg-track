@@ -2,4 +2,6 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-   return render(request, 'slobg_app/base.html')
+   user = request.user
+
+   return render(request, 'slobg_app/home.html', {user: user})
