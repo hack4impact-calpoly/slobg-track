@@ -1,0 +1,43 @@
+{% extends "slobg_app/base.html" %}
+{% load static %}
+{% block pageContent %}
+
+
+        <div class="p-3 mb-2 bg-light" style="position:relative; width: 505px; height: 500px; margin:auto; border: 15px solid darkseagreen; top: 15px">
+                <form method="POST" style="width: 450px; margin: auto;"> {% csrf_token %}
+                    <div class="form-group"> 
+                        <h2 style="text-align: center;">Track Individual Hours</h2>    
+                    </div>   
+        
+                    <div class="form-group">
+                            <label for="id_date">Date:</label>
+                            {{ form.date }}
+                    </div>
+                    
+                        <div class="form-group">
+                            <label for="id_hours">Hours:</label>
+                            {{ form.hours }}
+                        </div>
+                    
+                <div class="form-group">
+                    <label for="id_supervisor">Supervisor:</label>
+                    {{ form.supervisor }}
+                </div>
+                    
+                <div class="form-group">
+                    <label for="id_activity">Activity:</label>
+                    {{ form.activity }}
+                </div>
+                       
+                <div class="form-group">
+                    <button type="button" class="btn btn-light btn-small" style="float: right">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
+{% endblock pageContent%}
