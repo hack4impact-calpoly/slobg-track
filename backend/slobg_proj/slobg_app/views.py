@@ -9,18 +9,17 @@ def home(request):
 
    return render(request, 'slobg_app/home.html', {user: user})
 
-def add_ind_hours_view(request):
+def add_individual_hours(request):
    form = VolunteerHoursForm(request.POST or None)
    if form.is_valid():
       form.save()
       form = VolunteerHoursForm()
-   
    context = {
       'form' : form
    }
-
    return render(request, "slobg_app/ind_add_hours.html", context)
-def group_volunteer(request):
+
+def add_group_hours(request):
    form = GroupVolunteerForm(request.POST or None)
    if form.is_valid():
       form = GroupVolunteerForm()
