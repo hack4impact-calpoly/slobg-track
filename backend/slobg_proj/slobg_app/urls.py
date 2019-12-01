@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from slobg_app.views import add_ind_hours_view
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('ind_add/', add_ind_hours_view),
 ]
