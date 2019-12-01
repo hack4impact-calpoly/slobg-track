@@ -20,7 +20,6 @@ def add_ind_hours_view(request):
    }
 
    return render(request, "slobg_app/ind_add_hours.html", context)
-
 def group_volunteer(request):
    form = GroupVolunteerForm(request.POST or None)
    if form.is_valid():

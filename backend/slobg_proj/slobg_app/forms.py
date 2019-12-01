@@ -61,7 +61,6 @@ class VolunteerHoursForm(forms.ModelForm):
                 }
             ),
         }
-
 class GroupVolunteerForm(forms.ModelForm):
     class Meta:
         model = GroupVolunteerForm
