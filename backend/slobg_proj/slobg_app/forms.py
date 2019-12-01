@@ -61,3 +61,52 @@ class VolunteerHoursForm(forms.ModelForm):
                 }
             ),
         }
+class GroupVolunteerForm(forms.ModelForm):
+    class Meta:
+        model = GroupVolunteerForm
+        fields = ['activity','hours','date','supervisor',
+        'number_volunteers','group_name','email']
+        widgets = {
+            'date':forms.TextInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'yyyy-mm-dd'
+                }
+            ),
+            'hours':forms.NumberInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'0'
+                }
+            ),
+            'supervisor':forms.TextInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'Supervisor Name'
+                }
+            ),
+            'activity':forms.TextInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'Describe the activity you volunteered for'
+                }
+            ),
+            'number_volunteers':forms.TextInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'1'
+                }
+            ),
+            'group_name':forms.TextInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':'Your group name here'
+                }
+            ),
+            'email':forms.EmailInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder':''
+                }
+            ),
+        }

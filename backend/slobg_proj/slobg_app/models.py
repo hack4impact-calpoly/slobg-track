@@ -33,3 +33,11 @@ class VolunteerHours(models.Model):
 	date = models.DateField(auto_now=False, auto_now_add=False, default=date.today)
 	supervisor = models.CharField(max_length=256, blank=False)
 
+class GroupVolunteerModel(models.Model):
+	activity = models.CharField(max_length=256, blank=False)
+	hours = models.FloatField(blank=False)
+	date = models.DateTimeField(default=djnow)
+	supervisor = models.EmailField(max_length=254)
+	number_volunteers = models.IntegerField()
+	group_name = models.CharField(max_length=200, default="")
+	email = models.EmailField(max_length=254)
