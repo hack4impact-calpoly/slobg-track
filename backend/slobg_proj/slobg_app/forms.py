@@ -1,4 +1,4 @@
-from .models import Volunteer, VolunteerHours
+from .models import Volunteer, VolunteerHours, GroupVolunteerModel
 from django import forms
 
 #Form for creating a new Volunteer model
@@ -63,7 +63,7 @@ class VolunteerHoursForm(forms.ModelForm):
         }
 class GroupVolunteerForm(forms.ModelForm):
     class Meta:
-        model = GroupVolunteerForm
+        model = GroupVolunteerModel
         fields = ['activity','hours','date','supervisor',
         'number_volunteers','group_name','email']
         widgets = {
