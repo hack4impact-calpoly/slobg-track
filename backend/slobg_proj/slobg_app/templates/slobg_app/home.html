@@ -1,0 +1,23 @@
+{% extends "slobg_app/base.html" %}
+{% load static %}
+{% block pageContent %}
+<h1>Submit Volunteer Hours</h1>
+
+<form method="POST" action='/'>
+   {% csrf_token %}
+   <div class="col-12">
+      <div class="form-group">
+         <h3>How many hours did you volunteer today?</h3>
+         <input type="number" placeholder="Example: 2, 3.5, etc.">
+      </div>
+   </div>
+   <div class="form-group">
+      <h3>What activity did you do?</h3>
+      <input type="text" placeholder="Example: Watered plants, etc.">
+   </div>
+   <div class="form-group">
+      <h3>Today's Date</h3>
+      <input type="date" placeholder="Today">
+   </div>
+</form>
+{% endblock pageContent %}

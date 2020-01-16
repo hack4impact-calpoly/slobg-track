@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from slobg_app import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('slobg_app.urls')),
+    path("admin/", admin.site.urls),
+    path("signup/", views.signup, name="signup"),
+    path("", include("slobg_app.urls")),
+    path("", include("django.contrib.auth.urls")),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+

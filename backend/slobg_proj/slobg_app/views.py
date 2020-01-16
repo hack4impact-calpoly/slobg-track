@@ -1,5 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, render_to_response
 
-# Create your views here.
+from .forms import VolunteerHoursForm, GroupVolunteerForm
+from .models import VolunteerHours, GroupVolunteerModel
+
+# Login stuff
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+
+def signup(request):
+   if request.method == "POST":
+      form = UserCreationForm(request.POST)
+      if form.is_valid():
+         form.save()
+         username = form.cleaned_data.get('username')
+         raw_password = form.cleaned_data.get('password1')
+         user = authenticate(username=username, password=raw_password)
+         login(request, user)
+         return redirect('/')
+      else:
+         print("form not valid")
+   else:
+      print("not POST")
+      form = UserCreationForm()
+   return render(request, "slobg_app/signup.html", {"form":form})
+
+
+@login_required
 def home(request):
-   return render(request, 'slobg_app/base.html')
+   user = request.user
+   return render(request, 'slobg_app/home.html', {user: user})
+
+@login_required
+def add_individual_hours(request):
+   form = VolunteerHoursForm(request.POST or None)
+   if form.is_valid():
+      form.save()
+      form = VolunteerHoursForm()
+   context = {
+      'form' : form
+   }
+   return render(request, "slobg_app/ind_add_hours.html", context)
+
+@login_required
+def add_group_hours(request):
+   form = GroupVolunteerForm(request.POST or None)
+   if form.is_valid():
+      form = GroupVolunteerForm()
+      form.save()
+   context = {
+      'form': form
+   }
+   return render(request, 'slobg_app/group_sign_in.html', {})
