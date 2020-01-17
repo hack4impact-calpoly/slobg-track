@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
-from slobg_app.views import add_individual_hours, add_group_hours
+from django.views.generic.base import TemplateView # new
+from slobg_app import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('add_individual_hours/', add_individual_hours),
-    path('add_group_hours/', add_group_hours),
+    path('add_individual_hours/', views.add_individual_hours, name="add_individual_hours"),
+    #path('add_group_hours/', views.add_group_hours, name="add_group_hours"),
 ]

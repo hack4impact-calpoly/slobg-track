@@ -1,36 +1,25 @@
-from .models import Volunteer, VolunteerHours, GroupVolunteerModel
+from .models import VolunteerRecord
+
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-#Form for creating a new Volunteer model
-#Form reflects the Individual Volunteer form on the SRS
-class VolunteerForm(forms.ModelForm):
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
+    last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
     class Meta:
-        model = Volunteer
-        fields = ['name', 'street_address', 'city', 'zipcode', 'state', 
-                'phone', 'email', 'birthdate', 'work_preference', 
-                'area_of_interest']
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 
-#class VolunteerForm(forms.ModelForm):
-#    class Meta:
-#        model = Volunteer
-#        fields = ['username', 'name', 'street_address', 'city', 'zipcode', 
-#                'state', 'phone', 'email', 'birthdate', 'work_preference', 
-#                'area_of_interest']
-#       widgets = {
-#            'username' : forms.TextInput(
-#                attrs={
-#                    'class': 'form-control',
-#                    'placeholder': 'username'
-#                }),
-#            'name' : forms.TextInput(
-#                attrs={
-#                    'class': 'form-control',
-#                    'placeholder': 'First Last'
-#                }),
-#            'birthdate' : forms.TextInput(attrs={'class': 'form-control'})
-#        }
+class VolunteerRecordForm(forms.ModelForm):
+    class Meta:
+        model = VolunteerRecord
+        fields = ('activity', 'hours', 'date', 'supervisor')
 
+''' 
 class VolunteerHoursForm(forms.ModelForm):
     class Meta:
         model = VolunteerHours
@@ -110,3 +99,4 @@ class GroupVolunteerForm(forms.ModelForm):
                 }
             ),
         }
+'''
