@@ -1,23 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
 {% block pageContent %}
-<h1>Submit Volunteer Hours</h1>
+{% if not user.is_superuser %}
+<link rel="stylesheet" href="{% static 'css/ind_vol_form.css' %}">
+<div class="p-3 mb-2 green-border">
+    <div class="p-3 mb-2 form-bg" >
+        <form method="POST" class="ind-form"> {% csrf_token %}
+            <div class="form-group"> 
+                <h2 class="form-head">Track Individual Hours</h2>    
+            </div>   
+            
+            <div class="form-group form-box">
+                <label for="id_date">Date:</label>
+                {{ form.date }}
+            </div>
+                        
+            <div class="form-group form-box">
+                <label for="id_hours">Hours:</label>
+                {{ form.hours }}
+            </div>
+                    
+            <div class="form-group form-box">
+                <label for="id_supervisor">Supervisor:</label>
+                {{ form.supervisor }}
+            </div>
+                   
+            <div class="form-group form-box">
+                <label for="id_activity">Activity:</label>
+                {{ form.activity }}
+            </div>
+                       
+            <div class="form-group">
+                <button type="button" class="btn btn-light btn-small submit-btn">Submit</button>
+            </div>
 
-<form method="POST" action='/'>
-   {% csrf_token %}
-   <div class="col-12">
-      <div class="form-group">
-         <h3>Hey?</h3>
-         <input type="number" placeholder="Example: 2, 3.5, etc.">
-      </div>
-   </div>
-   <div class="form-group">
-      <h3>What activity did you do?</h3>
-      <input type="text" placeholder="Example: Watered plants, etc.">
-   </div>
-   <div class="form-group">
-      <h3>Today's Date</h3>
-      <input type="date" placeholder="Today">
-   </div>
-</form>
-{% endblock pageContent %}
+        </form>
+    </div>
+</div>
+{% endif %}
+{% if user.is_superuser %}
+
+<h2>I'm an admin<h2>
+
+{% endif %}
+
+
+{% endblock pageContent%}
