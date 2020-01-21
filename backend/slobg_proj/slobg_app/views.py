@@ -34,6 +34,7 @@ def home(request):
 def add_individual_hours(request):
    form = VolunteerRecordForm(request.POST)
    if form.is_valid():
+      print("form")
       form.save()
       return redirect('/')
    context = {

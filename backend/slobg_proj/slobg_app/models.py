@@ -32,6 +32,7 @@ class VolunteerRecord(models.Model):
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)
+	
 
 class GroupVolunteerModel(models.Model):
 	activity = models.CharField(max_length=256, blank=False)

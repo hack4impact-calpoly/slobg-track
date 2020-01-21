@@ -15,6 +15,10 @@ class SignUpForm(UserCreationForm):
 
 
 class VolunteerRecordForm(forms.ModelForm):
+    def save(self, *args, **kwargs):
+        # Update user hours here once User model is extended.
+        super(VolunteerRecordForm, self).save(*args, **kwargs)
+
     class Meta:
         model = VolunteerRecord
         fields = ('activity', 'hours', 'date', 'supervisor')
