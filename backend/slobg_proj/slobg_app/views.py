@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, VolunteerRecordForm
 
@@ -17,7 +17,7 @@ def signup(request):
          raw_password = form.cleaned_data.get('password1')
          user = authenticate(username=username, password=raw_password)
          login(request, user)
-         return redirect('/')3
+         return redirect('/')
       else:
          print("form not valid")
    else:
@@ -51,3 +51,8 @@ def add_individual_hours(request):
 #       'form': form
 #    }
 #    return render(request, 'group_sign_in.html', {})
+
+@login_required
+def history(request):
+   user = request.user
+   return render(request, "history.html", {user: user})
