@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 
-from .forms import SignUpForm #, VolunteerHoursForm, GroupVolunteerForm
-# from .models import VolunteerHours, GroupVolunteerModel
+from .forms import SignUpForm, VolunteerRecordForm
 
 # Signup/Login stuff
 from django.contrib.auth import login, authenticate
@@ -18,42 +17,37 @@ def signup(request):
          raw_password = form.cleaned_data.get('password1')
          user = authenticate(username=username, password=raw_password)
          login(request, user)
-         return redirect('/')
+         return redirect('/')3
       else:
          print("form not valid")
    else:
       form = SignUpForm()
-   return render(request, "slobg_app/signup.html", {"form":form})
+   return render(request, "signup.html", {"form":form})
 
 
 @login_required
 def home(request):
    user = request.user
-   return render(request, 'slobg_app/home.html', {user: user})
+   return render(request, 'home.html', {user: user})
 
 @login_required
 def add_individual_hours(request):
-   form = VolunteerHoursForm(request.POST or None)
+   form = VolunteerRecordForm(request.POST)
    if form.is_valid():
       form.save()
-      form = VolunteerHoursForm()
+      return redirect('/')
    context = {
       'form' : form
    }
-   return render(request, "slobg_app/ind_add_hours.html", context)
+   return render(request, "ind_add_hours.html", context)
 
-@login_required
-def add_group_hours(request):
-   form = GroupVolunteerForm(request.POST or None)
-   if form.is_valid():
-      form = GroupVolunteerForm()
-      form.save()
-   context = {
-      'form': form
-   }
-   return render(request, 'slobg_app/group_sign_in.html', {})
-
-@login_required
-def view_history(request):
-   pass
-   # complete later
+# @login_required
+# def add_group_hours(request):
+#    form = GroupVolunteerForm(request.POST or None)
+#    if form.is_valid():
+#       form = GroupVolunteerForm()
+#       form.save()
+#    context = {
+#       'form': form
+#    }
+#    return render(request, 'group_sign_in.html', {})

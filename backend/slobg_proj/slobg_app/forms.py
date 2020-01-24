@@ -1,4 +1,4 @@
-#from .models import #Profile #, Volunteer, VolunteerHours, GroupVolunteerModel
+from .models import VolunteerRecord
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -13,37 +13,13 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
-'''
-# Form for creating a new Volunteer model
-# Form reflects the Individual Volunteer form on the SRS
-class VolunteerForm(forms.ModelForm):
+
+class VolunteerRecordForm(forms.ModelForm):
     class Meta:
-        model = Volunteer
-        fields = ['name', 'street_address', 'city', 'zipcode', 'state', 
-                'phone', 'email', 'birthdate', 'work_preference', 
-                'area_of_interest']
+        model = VolunteerRecord
+        fields = ('activity', 'hours', 'date', 'supervisor')
 
-
-#class VolunteerForm(forms.ModelForm):
-#    class Meta:
-#        model = Volunteer
-#        fields = ['username', 'name', 'street_address', 'city', 'zipcode', 
-#                'state', 'phone', 'email', 'birthdate', 'work_preference', 
-#                'area_of_interest']
-#       widgets = {
-#            'username' : forms.TextInput(
-#                attrs={
-#                    'class': 'form-control',
-#                    'placeholder': 'username'
-#                }),
-#            'name' : forms.TextInput(
-#                attrs={
-#                    'class': 'form-control',
-#                    'placeholder': 'First Last'
-#                }),
-#            'birthdate' : forms.TextInput(attrs={'class': 'form-control'})
-#        }
-
+''' 
 class VolunteerHoursForm(forms.ModelForm):
     class Meta:
         model = VolunteerHours
