@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 '''
 class Volunteer(models.Model):
 	WORK_PREFERENCES = [
@@ -32,6 +33,11 @@ class VolunteerRecord(models.Model):
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)
+
+	def __str__(self):
+
+		return "Date: {}, Activity: {}".format(self.date, self.activity)
+	
 
 class GroupVolunteerModel(models.Model):
 	activity = models.CharField(max_length=256, blank=False)
