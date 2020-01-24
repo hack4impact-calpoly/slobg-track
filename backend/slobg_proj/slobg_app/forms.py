@@ -14,6 +14,9 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class VolunteerRecordForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         # Update user hours here once User model is extended.
@@ -22,6 +25,7 @@ class VolunteerRecordForm(forms.ModelForm):
     class Meta:
         model = VolunteerRecord
         fields = ('activity', 'hours', 'date', 'supervisor')
+        widgets = {'date' : DateInput(attrs={'id':'dateTimePicker'})}
 
 ''' 
 class VolunteerHoursForm(forms.ModelForm):
