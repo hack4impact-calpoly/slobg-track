@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, VolunteerRecordForm
 
@@ -60,3 +60,8 @@ def add_individual_hours(request):
 #       'form': form
 #    }
 #    return render(request, 'group_sign_in.html', {})
+
+@login_required
+def history(request):
+   user = request.user
+   return render(request, "history.html", {user: user})
