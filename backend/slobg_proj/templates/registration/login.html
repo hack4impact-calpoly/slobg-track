@@ -1,11 +1,22 @@
-{% extends "base.html" %}
 {% load static %}
+{% block pageHeader %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'slobg_app/css/landing.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock pageHeader%}
 
 {% block pageContent %}
-<h2>Log in</h2>
-   <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Login</button>
-   </form>
+<div class="center-page center-text">
+    <img class="inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="214px" height="142px">
+    <h2 class="main-text custom-margins">Please Sign In</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-holder custom-margins">
+            <button class="btn btn-primary px-2 m-3" type="submit">Log In</button>
+            <a class="btn btn-primary px-2 m-3" href="/signup/" >Sign Up</a>
+        </div>
+    </form>
+</div> 
+
 {% endblock %}
