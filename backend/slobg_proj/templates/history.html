@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pageContent %}
+
+<h1>Volunteer Hours</h1>
+<table style="width:100%" id="history_table">
+    <tr>
+        <th>Date</th>
+        <th>Hours</th>
+        <th>Description</th>
+        <th>Supervisor</th>
+    </tr>
+    {% for r in records %}
+    <tr>
+        <td>{{ r.date }}</td>
+        <td>{{ r.hours }}</td>
+        <td>{{ r.activity }}</td>
+        <td>{{ r.supervisor }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<style>
+    table, th, td{
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    th{
+        text-align: left;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+</style>
+</html>
+
+{% endblock %}
