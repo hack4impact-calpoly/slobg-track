@@ -1,21 +1,31 @@
-{% extends "base.html" %}
 {% load static %}
+{% block pageHeader %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'slobg_app/css/landing.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock pageHeader%}
 
 {% block pageContent %}
-<h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
+<div class="center-page center-text">
+  <img class="inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="214px" height="142px">
+  <h2 class="main-text m-2">Sign Up Below</h2>
+  <div class="align-box">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <p>
+          <div class="align-fields">
+            {{ field.label_tag }} <br/>
+            {{ field }} 
+            <!-- {% if field.help_text %}
+              <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %} -->
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </div>
+        </p>
+      {% endfor %}
+      <button class="btn btn-primary px-2 m-3" type="submit">Sign up</button>
+    </form>
+  </div>
 {% endblock %}

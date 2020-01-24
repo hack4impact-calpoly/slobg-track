@@ -14,8 +14,18 @@
     margin: auto;
     width: 50%;
     border: 3px solid green;
-    padding-top: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 50px;
+}
+
+.align-box {
+    width: 150px;
+    margin: auto;
+}
+
+.align-fields {
+    text-align: left;
 }
 
 .center-main {
