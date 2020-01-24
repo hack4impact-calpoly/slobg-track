@@ -10,12 +10,14 @@
         <th>Description</th>
         <th>Supervisor</th>
     </tr>
+    {% for r in records %}
     <tr>
-        <td>01/01/2020</td>
-        <td>8</td>
-        <td>Worked</td>
-        <td>Bob</td>
+        <td>{{ r.date }}</td>
+        <td>{{ r.hours }}</td>
+        <td>{{ r.activity }}</td>
+        <td>{{ r.supervisor }}</td>
     </tr>
+    {% endfor %}
 </table>
 
 <style>

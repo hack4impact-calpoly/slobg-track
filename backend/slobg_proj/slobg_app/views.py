@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, VolunteerRecordForm
-
+from .models import VolunteerRecord
 # Signup/Login stuff
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -63,5 +63,5 @@ def add_individual_hours(request):
 
 @login_required
 def history(request):
-   user = request.user
-   return render(request, "history.html", {user: user})
+   records = VolunteerRecord.objects.all()   # fix filter by user
+   return render(request, "history.html", {"records" : records})
