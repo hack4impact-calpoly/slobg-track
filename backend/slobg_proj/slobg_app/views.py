@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect, render_to_response
 
-from .forms import VolunteerHoursForm, GroupVolunteerForm
-from .models import VolunteerHours, GroupVolunteerModel
+from .forms import SignUpForm #, VolunteerHoursForm, GroupVolunteerForm
+# from .models import VolunteerHours, GroupVolunteerModel
 
-# Login stuff
+# Signup/Login stuff
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
+
 def signup(request):
    if request.method == "POST":
-      form = UserCreationForm(request.POST)
+      form = SignUpForm(request.POST)
       if form.is_valid():
          form.save()
          username = form.cleaned_data.get('username')
@@ -21,8 +22,7 @@ def signup(request):
       else:
          print("form not valid")
    else:
-      print("not POST")
-      form = UserCreationForm()
+      form = SignUpForm()
    return render(request, "slobg_app/signup.html", {"form":form})
 
 
@@ -52,3 +52,8 @@ def add_group_hours(request):
       'form': form
    }
    return render(request, 'slobg_app/group_sign_in.html', {})
+
+@login_required
+def view_history(request):
+   pass
+   # complete later

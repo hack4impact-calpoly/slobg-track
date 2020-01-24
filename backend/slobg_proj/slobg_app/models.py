@@ -1,8 +1,31 @@
 from django.db import models
-from datetime import date
-from django.utils.timezone import now as djnow
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
+'''
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.TextField(max_length=500, blank=True)
+	location = models.CharField(max_length=30, blank=True)
+	birth_date = models.DateField(null=True, blank=True)
+	total_volunteer_hours = models.FloatField(null=True, blank=True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
 
 class Volunteer(models.Model):
 	WORK_PREFERENCES = [
@@ -10,7 +33,6 @@ class Volunteer(models.Model):
 		("work_in_groups", "Work in Groups"),
 	]
 	AREAS_OF_INTEREST = []
-
 	total_hours = models.FloatField(default=0)
 	email = models.EmailField(max_length=254)
 	username = models.CharField(max_length=200, default="")
@@ -41,3 +63,5 @@ class GroupVolunteerModel(models.Model):
 	number_volunteers = models.IntegerField()
 	group_name = models.CharField(max_length=200, default="")
 	email = models.EmailField(max_length=254)
+
+'''
