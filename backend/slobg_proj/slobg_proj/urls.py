@@ -25,7 +25,7 @@ urlpatterns = [
     path("signup/", views.signup, name="signup"),
     path("", include("django.contrib.auth.urls")),
     path("", include("slobg_app.urls")),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'), 
+    path('', TemplateView.as_view(template_name='add_individual_hours.html'), name='home'), 
 ]
 
 urlpatterns += staticfiles_urlpatterns()
