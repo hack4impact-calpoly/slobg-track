@@ -7,7 +7,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
-
 def landing(request):
    return render(request, 'landing.html')
 
@@ -20,7 +19,7 @@ def signup(request):
          raw_password = form.cleaned_data.get('password1')
          user = authenticate(username=username, password=raw_password)
          login(request, user)
-         return redirect('/')
+         return redirect('/add_individual_hours')
       else:
          print("form not valid")
    else:
@@ -31,7 +30,7 @@ def signup(request):
 @login_required
 def home(request):
    user = request.user
-   return render(request, 'home.html', {user: user})
+   return redirect('/add_individual_hours')
 
 @login_required
 def add_individual_hours(request):
@@ -39,8 +38,11 @@ def add_individual_hours(request):
       form = VolunteerRecordForm(request.POST)
       if form.is_valid():
          # Set user field in the form here
-         #form.cleaned_data["user"] = request.user
-         form.save()
+         print("before commit false")
+         record = form.save(commit = False)
+         print("after", record)
+         record.owner = request.user
+         record.save()
          print("success")
          return redirect('/')
       else:
@@ -48,7 +50,7 @@ def add_individual_hours(request):
    else:
       form = VolunteerRecordForm()
 
-   return render(request, "ind_add_hours.html", {"form": form})
+   return render(request, "add_individual_hours.html", {"form": form})
 
 # @login_required
 # def add_group_hours(request):
@@ -63,5 +65,6 @@ def add_individual_hours(request):
 
 @login_required
 def history(request):
-   records = VolunteerRecord.objects.all()   # fix filter by user
+   current_user = request.user
+   records = VolunteerRecord.objects.filter(owner = current_user)   # fix filter by user
    return render(request, "history.html", {"records" : records})

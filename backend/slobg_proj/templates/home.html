@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block pageContent %}
-{% if not user.is_superuser %}
+
 <link rel="stylesheet" href="{% static 'css/ind_vol_form.css' %}">
 <div class="p-3 mb-2 green-border">
     <div class="p-3 mb-2 form-bg" >
@@ -37,12 +37,6 @@
         </form>
     </div>
 </div>
-{% endif %}
-{% if user.is_superuser %}
-
-<h2>I'm an admin<h2>
-
-{% endif %}
 
 
 {% endblock pageContent%}
