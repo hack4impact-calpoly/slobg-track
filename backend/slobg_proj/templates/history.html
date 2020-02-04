@@ -1,40 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block pageContent %}
+<link rel="stylesheet" type="text/css" href="{% static 'slobg_app/css/history.css' %}">
 
 <h1>Volunteer Hours</h1>
-<table style="width:100%" id="history_table">
-    <tr>
-        <th>Date</th>
-        <th>Hours</th>
-        <th>Description</th>
-        <th>Supervisor</th>
-    </tr>
-    {% for r in records %}
-    <tr>
-        <td>{{ r.date }}</td>
-        <td>{{ r.hours }}</td>
-        <td>{{ r.activity }}</td>
-        <td>{{ r.supervisor }}</td>
-    </tr>
-    {% endfor %}
+<table class="table table-striped table-bordered table-hover" style="width:90%">
+    <thead class="custom">
+        <tr>
+            {% if user.is_staff %}
+                <th scope="col">Username</th>
+            {% endif %}
+            <th scope="col">Date</th>
+            <th scope="col">Hours</th>
+            <th scope="col">Description</th>
+            <th scope="col">Supervisor</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in records %}
+        <tr>
+            {% if user.is_staff %}
+                <td>{{ r.owner }}</td>
+            {% endif %}
+            <td>{{ r.date }}</td>
+            <td>{{ r.hours }}</td>
+            <td>{{ r.activity }}</td>
+            <td>{{ r.supervisor }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
-
-<style>
-    table, th, td{
-        border-collapse: collapse;
-        border: 1px solid black;
-    }
-
-    th{
-        text-align: left;
-    }
-
-    h1{
-        text-align: center;
-    }
-
-</style>
-</html>
 
 {% endblock %}
