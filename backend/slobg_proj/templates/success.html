@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pageContent %}
+<link rel="stylesheet" type="text/css" href="{% static 'slobg_app/css/success.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<form method="POST" action='/'>
+    {% csrf_token %}
+    <body class="page">
+        <div class = "bottom">
+            <img class="inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="214px" height="142px">
+            <h1 class="submit">Form Successfully Submitted!</h1>
+            <a href="/">
+                <button type= "button" class = "btn btn-success"> Go back to home page </button>
+            </a>
+        </div>
+    </body>
+</form>
+{% endblock pageContent %}
+

@@ -60,6 +60,10 @@ def home(request):
    return redirect('/add_individual_hours')
 
 @login_required
+def success(request):
+    return render(request, "success.html")
+
+@login_required
 def add_individual_hours(request):
    if request.method == "POST":
       form = VolunteerRecordForm(request.POST)
@@ -71,13 +75,15 @@ def add_individual_hours(request):
          record.owner = request.user
          record.save()
          print("success")
-         return redirect('/')
+         return redirect('/success')
       else:
          print("form not valid")
    else:
       form = VolunteerRecordForm()
 
    return render(request, "add_individual_hours.html", {"form": form})
+
+
 
 # @login_required
 # def add_group_hours(request):
