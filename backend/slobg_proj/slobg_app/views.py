@@ -6,6 +6,33 @@ from .models import VolunteerRecord
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+# Csv stuff
+from django.http import HttpResponse
+import csv
+
+#Export to csv function
+def export_csv(request):
+   response = HttpResponse(content_type='text/csv')
+   response['Content-Disposition'] = 'attachment; filename="volunteer_history.csv"'
+
+   writer = csv.writer(response)
+   writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor'])
+
+   if(request.user.is_superuser):
+      records = VolunteerRecord.objects.all()
+   else:
+      records = VolunteerRecord.objects.filter(owner=request.user)
+
+   for record in records:
+      volunteer = record.owner.first_name + ' ' + record.owner.last_name
+      date = record.date
+      hours = record.hours
+      desc = record.activity
+      supervisor = record.supervisor
+
+      writer.writerow((volunteer, date, hours, desc, supervisor))
+
+   return response
 
 def landing(request):
    return render(request, 'landing.html')
