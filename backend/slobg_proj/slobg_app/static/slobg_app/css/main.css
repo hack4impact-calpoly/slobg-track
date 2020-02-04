@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
+
 .main-text{
     color: rgba(26,26,26,.9);
     font-size: 32px;
@@ -5,7 +7,7 @@
 }
 
 .secondary-text{
-    color: rgba(26,26,26,.9);
+    color: #4a4a4a;
     font-size: 24px;
     position: center;
 }
@@ -22,6 +24,7 @@
         margin-top: 25px;
     }
 }
+
 /* for medium screens*/
 @media screen and (min-width: 600px) and (max-width: 1000px){
     .center-page {
@@ -61,6 +64,7 @@
 .align-labels {
     text-align: left;
 }
+
 .align-fields {
     text-align: center;
 }
@@ -72,16 +76,24 @@
 .center-text {
    text-align: center;
 }
+
 .btn-primary {
+    font-family: 'proxima-nova', sans-serif;
+    font-weight: 300;
     background-color: #4b6444 !important;
 }
 
 .big-btn {
+    font-family: 'proxima-nova', sans-serif;
     margin-top: 20px;
     font-size: 24px !important;
-    font-weight: 500 !important;
+    font-weight: 300 !important;
     height: 50px;
     width: 200px;
+}
+
+.btn:hover {
+    background-color: #2e4129 !important;
 }
 
 .wide-btn {
@@ -108,10 +120,11 @@
     margin-left: -10px;
     margin-right: 12px;
 }
+
 .footer-position {
     font-size: 16px;
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 4.5rem;            /* Footer height */
-  }
+}
