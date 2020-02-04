@@ -1,0 +1,117 @@
+.main-text{
+    color: rgba(26,26,26,.9);
+    font-size: 32px;
+    position: center;
+}
+
+.secondary-text{
+    color: rgba(26,26,26,.9);
+    font-size: 24px;
+    position: center;
+}
+
+/* for large screens*/
+@media screen and (min-width: 1000px) {
+    .center-page {
+        margin: auto;
+        width: 40%;
+        border: 3px solid green;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+}
+/* for medium screens*/
+@media screen and (min-width: 600px) and (max-width: 1000px){
+    .center-page {
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+}
+/* for small screens*/
+@media screen and (max-width: 599px) {
+    .center-page {
+        margin: auto;
+        width: 75%;
+        border: 3px solid green;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        margin-top: 25px;
+    }
+}
+
+.align-box {
+    width: 80%;
+    margin: auto;
+    border: 2px solid black;
+}
+
+.align-fields-general {
+    width: 180px;
+    margin: auto;
+}
+
+.align-labels {
+    text-align: left;
+}
+.align-fields {
+    text-align: center;
+}
+
+.center-main {
+    padding-top: 30px;
+}
+
+.center-text {
+   text-align: center;
+}
+.btn-primary {
+    background-color: #4b6444 !important;
+}
+
+.big-btn {
+    margin-top: 20px;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    height: 50px;
+    width: 200px;
+}
+
+.wide-btn {
+    width: 180px;
+}
+
+.wide-btn-2 {
+    width: 152px;
+    margin-left: -25px;
+}
+
+.inverted {
+    filter: invert(1);
+    margin-bottom: -20px;
+}
+
+.custom-margins {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.nav-bar-image {
+    margin-top: -18px;
+    margin-left: -10px;
+    margin-right: 12px;
+}
+.footer-position {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem;            /* Footer height */
+  }
