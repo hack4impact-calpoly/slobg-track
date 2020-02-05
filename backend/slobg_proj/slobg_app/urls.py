@@ -24,5 +24,6 @@ urlpatterns = [
     path('add_individual_hours/', views.add_individual_hours, name="add_individual_hours"),
     # path('add_group_hours/', views.add_group_hours, name="add_group_hours"),
     path('history/', views.history, name="history"),
+    path('export/', views.export_csv, name='export_csv'),
     path('success/', views.success, name="success")
 ]
