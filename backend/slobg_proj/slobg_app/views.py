@@ -99,5 +99,8 @@ def add_individual_hours(request):
 @login_required
 def history(request):
    current_user = request.user
-   records = VolunteerRecord.objects.filter(owner = current_user)   # fix filter by user
+   if current_user.is_staff:
+      records = VolunteerRecord.objects.all()
+   else:
+      records = VolunteerRecord.objects.filter(owner = current_user)
    return render(request, "history.html", {"records" : records})
