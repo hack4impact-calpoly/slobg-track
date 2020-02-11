@@ -3,6 +3,7 @@ table, th, td{
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
+    overflow: auto;
 }
 
 th{
@@ -11,8 +12,9 @@ th{
 
 h1{
     text-align: center;
+    font-size: vw;
 }
 
 .custom{
-    background-color: #4b6444;
+    background-color: #4b6440;
 }
