@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+
+      body {
+        background-color: #f6f6f6;
+        font-family: sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 0;
+        padding: 0;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%; 
+      }
+
+      table {
+        border-collapse: separate;
+        width: 100%; }
+        table td {
+          font-family: sans-serif;
+          font-size: 14px;
+          vertical-align: top; 
+      }
+
+      /* -------------------------------------
+          BODY & CONTAINER
+      ------------------------------------- */
+
+      .body {
+        background-color: #4b6444;
+        width: 100%; 
+      }
+      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+      .container {
+        display: block;
+        margin: 0 auto !important;
+        /* makes it centered */
+        max-width: 580px;
+        padding: 10px;
+        width: 580px; 
+      }
+      .main-text{
+        color: rgb(255, 255, 255);
+      }
+
+      .secondary-text{
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        position: center;
+        margin-left: 10%;
+      }
+
+      /* This should also be a block element, so that it will fill 100% of the .container */
+      .content {
+        box-sizing: border-box;
+        display: block;
+        margin: 0 auto;
+        max-width: 580px;
+        padding: 10px; 
+      }
+
+      .main {
+        background: #4b6444;
+        border-radius: 3px;
+        width: 100%; 
+      }
+
+      .wrapper {
+        box-sizing: border-box;
+        padding: 20px; 
+      }
+
+      .content-block {
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      .footer {
+        clear: both;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%; 
+      }
+      .footer td {
+        text-decoration: none;
+        color: #f6f6f6;
+        font-size: 14px;
+        text-align: center; 
+      } 
+      .footer a {
+        text-decoration: none;
+        color: #f6f6f6;
+        font-size: 14px;
+        text-align: center; 
+        border-bottom: 1px solid #f6f6f6
+      }
+
+      /* -------------------------------------
+          TYPOGRAPHY
+      ------------------------------------- */
+      h1 {
+        font-size: 35px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: capitalize; 
+      }
+    </style>
+  </head>
+  <body class="">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+        <!-- START MAIN CONTENT AREA -->
+        <tr>
+        <td class="wrapper">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                <table cellpadding="0" cellspacing="0" style="border-collapse: separate;">
+                    <tr>
+                        <td>
+                            <tr style="text-align: center;">
+                            <img src="https://static1.squarespace.com/static/59f8d9d8e45a7c6679c6394a/t/5a33586e71c10b467bd042cf/1580507409169/?format=1500w" alt="Logo" title="Logo" style="margin: auto; display:block;" width="209px" height="142px">
+                            </tr>
+                            <h1 class="main-text" style="text-align: center;">Tracking form received</h1>
+                            <p class="secondary-text" style="text-align: left;">Activity: {{ form.activity }}</p>
+                            <p class="secondary-text" style="text-align: left;">Hours: {{ form.hours }}</p>
+                            <p class="secondary-text" style="text-align: left;">Date: {{ form.date }}</p>
+                            <p class="secondary-text" style="text-align: left;">Supervisor: {{ form.supervisor }}</p>
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+            </table>
+        </td>
+        </tr>
+        <!--End Main Content-->
+        <div class="footer">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="content-block powered-by">
+                        Powered by <a href="https://hack4impact.org">Hack4Impact Cal Poly</a>.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </table>
+  </body>
+</html>
