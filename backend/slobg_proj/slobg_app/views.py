@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, VolunteerRecordForm
 from .models import VolunteerRecord
+from django.conf import settings
 # Signup/Login stuff
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -9,6 +10,12 @@ from django.contrib.auth.decorators import login_required
 # Csv stuff
 from django.http import HttpResponse
 import csv
+
+# Email Receipt Stuff
+from django.core import mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
 
 #Export to csv function
 def export_csv(request):
@@ -38,20 +45,20 @@ def landing(request):
    return render(request, 'landing.html')
 
 def signup(request):
-   if request.method == "POST":
-      form = SignUpForm(request.POST)
-      if form.is_valid():
-         form.save()
-         username = form.cleaned_data.get('username')
-         raw_password = form.cleaned_data.get('password1')
-         user = authenticate(username=username, password=raw_password)
-         login(request, user)
-         return redirect('/add_individual_hours')
-      else:
-         print("form not valid")
-   else:
-      form = SignUpForm()
-   return render(request, "signup.html", {"form":form})
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/add_individual_hours')
+        else:
+            print("form not valid")
+    else:
+        form = SignUpForm()
+    return render(request, "signup.html", {"form":form})
 
 
 @login_required
@@ -68,14 +75,20 @@ def add_individual_hours(request):
    if request.method == "POST":
       form = VolunteerRecordForm(request.POST)
       if form.is_valid():
-         # Set user field in the form here
-         print("before commit false")
-         record = form.save(commit = False)
-         print("after", record)
-         record.owner = request.user
-         record.save()
-         print("success")
-         return redirect('/success')
+            # Set user field in the form here
+            print("before commit false")
+            record = form.save(commit = False)
+            print("after", record)
+            record.owner = request.user
+            record.save()
+            print("success")
+            subject = 'SLO Botanical Garden - Tracking Form Receipt'
+            html_message = render_to_string('email_template.html', {'form': form.cleaned_data}) 
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to = request.user.email
+            mail.send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+            return redirect('/success')
       else:
          print("form not valid")
    else:
