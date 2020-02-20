@@ -23,3 +23,6 @@ class VolunteerRecordForm(forms.ModelForm):
         fields = ('activity', 'hours', 'date', 'supervisor')
         widgets = {'date' : DateInput(attrs={'id':'dateTimePicker'})}
 
+class FilterForm(forms.Form):
+    start_date = forms.DateField(widget=DateInput)
+    end_date = forms.DateField(widget=DateInput)

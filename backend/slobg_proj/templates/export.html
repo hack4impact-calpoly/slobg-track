@@ -2,21 +2,25 @@
 {% load static %}
 {% block pageContent %}
 <div class="center-page center-text">
+    <div class="form-group">
+        <h2 class="form-head">Export CSV</h2>
+        <h3 class="form-head">Filter by start date and end date</h3>
+    </div>
     <form method="POST" id="form"> {% csrf_token %}
-        <div class="form-group">
-            <h2 class="form-head">Export CSV</h2>
-            <h3 class="form-head">Filter by start date and end date</h3>
-        </div>
-        <div class="form-group form-box">
-            <label for="id_date">Start Date:</label>
-            {{ form.date }}
-        </div>
-        <div class="form-group form-box">
-            <label for="id_date">End Date:</label>
-            {{ form.date }}
+        <div class="align-fields-general">
+            {% for field in form %}
+            <p>
+                <div class="align-labels">
+                    {{ field.label_tag }} <br/>
+                </div>
+                <div class="align-fields" id='datetimepicker1'>
+                    {{ field }} 
+                </div>
+            </p>
+            {% endfor %}
         </div>
         <div class="button-holder custom-margins"></div>
-            <button class="btn wide-btn btn-primary" type="submit" form="form">Export CSV</button>
+            <button class="btn wide-btn btn-primary" type="submit" form="form" href="{% url 'export_csv' %}">Export CSV</button>
         </div>
     </form>
 </div>
