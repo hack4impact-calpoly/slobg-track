@@ -1,0 +1,1 @@
+web: gunicorn slobg_proj.wsgi
