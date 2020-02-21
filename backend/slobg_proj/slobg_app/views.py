@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .forms import SignUpForm, VolunteerRecordForm
+from .forms import SignUpForm, VolunteerRecordForm, FilterForm
 from .models import VolunteerRecord
 from django.conf import settings
 # Signup/Login stuff
@@ -18,17 +18,18 @@ from django.utils.html import strip_tags
 
 
 #Export to csv function
-def export_csv(request):
+def export_csv(request, start_date, end_date):
    response = HttpResponse(content_type='text/csv')
-   response['Content-Disposition'] = 'attachment; filename="volunteer_history.csv"'
-
+   response['Content-Disposition'] = 'attachment; filename="volunteer_history: {} to {}.csv"'.format(start_date, end_date)
+   print(start_date)
+   print(end_date)
    writer = csv.writer(response)
    writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor'])
 
    if(request.user.is_superuser):
-      records = VolunteerRecord.objects.all()
+      records = VolunteerRecord.objects.all().filter(date__range=[start_date, end_date])
    else:
-      records = VolunteerRecord.objects.filter(owner=request.user)
+      records = VolunteerRecord.objects.filter(owner=request.user, date__range=[start_date, end_date])
 
    for record in records:
       volunteer = record.owner.first_name + ' ' + record.owner.last_name
@@ -38,8 +39,24 @@ def export_csv(request):
       supervisor = record.supervisor
 
       writer.writerow((volunteer, date, hours, desc, supervisor))
-
+   
    return response
+
+@login_required
+def export(request):
+   if request.method == "POST":
+      form = FilterForm(request.POST)
+      if form.is_valid():
+         start = form.cleaned_data['start_date']
+         end = form.cleaned_data['end_date']
+         response = export_csv(request, start, end)
+         return response
+      else:
+         print("form not valid")
+   else:
+      form = FilterForm()
+   return render(request, 'export.html', {'form':form})
+
 
 def landing(request):
    return render(request, 'landing.html')
