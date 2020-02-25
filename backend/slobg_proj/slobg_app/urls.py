@@ -25,6 +25,10 @@ urlpatterns = [
     # path('add_group_hours/', views.add_group_hours, name="add_group_hours"),
     path('history/', views.history, name="history"),
     path('export/', views.export, name='export'),
+<<<<<<< HEAD
     path('export_csv/', views.export_csv, name="export_csv"),
+=======
+    path('export/', views.export_csv, name='export_csv'),
+>>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
     path('success/', views.success, name="success")
 ]

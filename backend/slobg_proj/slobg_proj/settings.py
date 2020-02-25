@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 # HEROKU STUFF:
+<<<<<<< HEAD
 # --------------import django_heroku
+=======
+#import django_heroku
+>>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -95,9 +99,15 @@ DATABASES = {
 }
 
 # Heroku: Update database configuration from $DATABASE_URL.
+<<<<<<< HEAD
 # ------------import dj_database_url
 # ------------db_from_env = dj_database_url.config(conn_max_age=500)
 # ------------DATABASES['default'].update(db_from_env)
+=======
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+>>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
 
 
 # Password validation
@@ -148,4 +158,8 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'landing'
 
 # HEROKU STUFF:
+<<<<<<< HEAD
 # ---------django_heroku.settings(locals())
+=======
+#django_heroku.settings(locals())
+>>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0

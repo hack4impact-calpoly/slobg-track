@@ -24,30 +24,30 @@
 
 <body>
     <!-- NAVBAR HERE -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <img class="inverted nav-bar-image" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="110px" height="74px">
-        <a class="navbar-brand" href="/add_individual_hours" >track4impact</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #637039;">
+        <img class=" nav-bar-image" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="110px" height="74px">
+        <a class="navbar-brand" href="/add_individual_hours" style = "color: #FFFFFF">track4impact</a>
+        <button class=" inverted navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class=" collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/add_individual_hours">Add Individual Hours<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/add_individual_hours" style = "color: #FFFFFF">Add Individual Hours<span class="sr-only">(current)</span></a>
             </li>
             <!-- {% if user.is_staff %}
               <li class="nav-item">
-                <a class="nav-link" href="/add_group_hours">Add Group Hours<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/add_group_hours" style = "color: #FFFFFF">Add Group Hours<span class="sr-only">(current)</span></a>
               </li>
             {% endif %} -->
             <li class="nav-item">
-                <a class="nav-link" href="/history">View History</a>
+                <a class="nav-link" href="/history" style = "color: #FFFFFF">View History</a>
               </li>
           </ul>
           <ul class="navbar-nav ml-auto" >
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'logout' %}" style = "color: #FFFFFF">Logout</a>
               </li>
           </ul>
         </div>

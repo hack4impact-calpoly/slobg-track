@@ -20,8 +20,9 @@ from django.utils.html import strip_tags
 #Export to csv function
 def export_csv(request, start_date, end_date):
    response = HttpResponse(content_type='text/csv')
-   response['Content-Disposition'] = 'attachment; filename="volunteer_history.csv"'
-
+   response['Content-Disposition'] = 'attachment; filename="volunteer_history: {} to {}.csv"'.format(start_date, end_date)
+   print(start_date)
+   print(end_date)
    writer = csv.writer(response)
    writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor'])
 
@@ -38,7 +39,7 @@ def export_csv(request, start_date, end_date):
       supervisor = record.supervisor
 
       writer.writerow((volunteer, date, hours, desc, supervisor))
-
+   
    return response
 
 @login_required
@@ -48,7 +49,12 @@ def export(request):
       if form.is_valid():
          start = form.cleaned_data['start_date']
          end = form.cleaned_data['end_date']
+<<<<<<< HEAD
          export_csv(request, start, end)
+=======
+         response = export_csv(request, start, end)
+         return response
+>>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
       else:
          print("form not valid")
    else:
