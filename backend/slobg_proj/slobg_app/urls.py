@@ -19,16 +19,12 @@ from django.views.generic.base import TemplateView # new
 from slobg_app import views
 
 urlpatterns = [
-    path('', views.home),
-    path('landing', views.landing, name="landing"),
+    path('/', views.home, name='home'),
+    path('landing/', views.landing, name="landing"),
     path('add_individual_hours/', views.add_individual_hours, name="add_individual_hours"),
     # path('add_group_hours/', views.add_group_hours, name="add_group_hours"),
     path('history/', views.history, name="history"),
     path('export/', views.export, name='export'),
-<<<<<<< HEAD
-    path('export_csv/', views.export_csv, name="export_csv"),
-=======
     path('export/', views.export_csv, name='export_csv'),
->>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
     path('success/', views.success, name="success")
 ]

@@ -49,12 +49,8 @@ def export(request):
       if form.is_valid():
          start = form.cleaned_data['start_date']
          end = form.cleaned_data['end_date']
-<<<<<<< HEAD
-         export_csv(request, start, end)
-=======
          response = export_csv(request, start, end)
          return response
->>>>>>> 258fe40924d2645afa4fce732d379f1e735629d0
       else:
          print("form not valid")
    else:
