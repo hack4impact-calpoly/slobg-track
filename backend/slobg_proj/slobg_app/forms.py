@@ -27,3 +27,34 @@ class VolunteerRecordForm(forms.ModelForm):
 class FilterForm(forms.Form):
     start_date = forms.DateField(widget=DateInput)
     end_date = forms.DateField(widget=DateInput)
+
+
+    def is_valid(self):
+
+        valid = super(FilterForm, self).is_valid()
+        if not valid:
+            return valid
+
+
+        start_year = self.cleaned_data['start_date'].year
+        start_month = self.cleaned_data['start_date'].month
+        start_day = self.cleaned_data['start_date'].day
+
+        end_year = self.cleaned_data['end_date'].year
+        end_month = self.cleaned_data['end_date'].month
+        end_day = self.cleaned_data['end_date'].day
+
+        if(start_year < end_year):
+            return True
+        elif(start_year > end_year):
+            return False
+        
+        if(start_month < end_month):
+            return True
+        elif(start_month > end_month):
+            return False
+
+        if(start_day <= end_day):
+            return True
+
+        return False
