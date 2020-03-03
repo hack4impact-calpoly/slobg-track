@@ -26,5 +26,6 @@ urlpatterns = [
     path('history/', views.history, name="history"),
     path('export/', views.export, name='export'),
     path('export/', views.export_csv, name='export_csv'),
-    path('success/', views.success, name="success")
+    path('success/', views.success, name="success"),
+    path('profile/', views.profile, name="profile"),
 ]

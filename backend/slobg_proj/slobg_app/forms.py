@@ -17,11 +17,18 @@ class SignUpForm(UserCreationForm):
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+class NumberInput(forms.NumberInput):
+    input_type = 'number'
+
 class VolunteerRecordForm(forms.ModelForm):
     class Meta:
         model = VolunteerRecord
         fields = ('activity', 'hours', 'date', 'supervisor')
-        widgets = {'date' : DateInput(attrs={'id':'dateTimePicker'})}
+        hours = forms.FloatField(min_value=0)
+        widgets = {
+            'date' : DateInput(attrs={'id':'dateTimePicker'}),
+            'hours' : NumberInput(attrs={'id': 'form_hours', 'step': "0.25"})
+        }
 
 
 class FilterForm(forms.Form):
