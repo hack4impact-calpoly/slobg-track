@@ -80,8 +80,7 @@ def signup(request):
 
 @login_required
 def home(request):
-   user = request.user
-   return redirect('/add_individual_hours')
+   return redirect('add_individual_hours')
 
 @login_required
 def success(request):
