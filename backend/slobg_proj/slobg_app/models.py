@@ -3,8 +3,13 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+ACTIVITY_CHOICES = (('Maintenance', 'Maintenance'), 
+					('Administration', 'Administration'), 
+					('Outreach', 'Outreach'), 
+					('Education', 'Education'))
+
 class VolunteerRecord(models.Model):
-	activity = models.CharField(max_length=256, blank=False)
+	activity = models.CharField(max_length=256, blank=False, choices=ACTIVITY_CHOICES)
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)

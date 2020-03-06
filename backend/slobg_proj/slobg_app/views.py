@@ -19,6 +19,7 @@ from django.utils.html import strip_tags
 
 #Export to csv function
 def export_csv(request, start_date, end_date):
+   print(request)
    response = HttpResponse(content_type='text/csv')
    response['Content-Disposition'] = 'attachment; filename="volunteer_history: {} to {}.csv"'.format(start_date, end_date)
    print(start_date)
