@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 # Csv stuff
 from django.http import HttpResponse
 import csv
+from django.db.models import Sum
+
 
 # Email Receipt Stuff
 from django.core import mail
@@ -133,3 +135,10 @@ def history(request):
    else:
       records = VolunteerRecord.objects.filter(owner = current_user)
    return render(request, "history.html", {"records" : records})
+
+
+@login_required
+def profile(request):
+    current_user = request.user
+    hours = VolunteerRecord.objects.filter(owner = current_user).all().aggregate(total_hours=Sum('hours'))['total_hours'] or 0
+    return render(request, "profile.html", {'hours' : hours})
