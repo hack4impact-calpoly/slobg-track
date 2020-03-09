@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.test import Client
 from django.contrib.auth.models import User
-
 from slobg_app.forms import SignUpForm
 
 class MyTests(TestCase):
