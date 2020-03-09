@@ -18,6 +18,7 @@ class ExportCSVTest(TestCase):
       self.factory = RequestFactory()
       self.user = User.objects.create_user(
             username='admin', email='admin@gmail.com', password='pass', first_name='Test', last_name='Admin')
+      self.jp = User.objects.create_user(username='jp', email='jpoist97@gmail.com', password='pass', first_name='J', last_name='Admin')
       
       VolunteerRecord.objects.create(activity="Planting trees",
                            hours=2,
@@ -36,7 +37,13 @@ class ExportCSVTest(TestCase):
                            date='2020-02-28',
                            supervisor="Test Supervisor",
                            owner = self.user
-                           )  
+                           ) 
+      VolunteerRecord.objects.create(activity="Testing",
+                           hours=3,
+                           date='2020-02-28',
+                           supervisor="Test Supervisor",
+                           owner = self.jp
+                           )   
 
    def test_activity_form_valid(self):
       form = FilterForm(data={'start_date':'2020-02-27', 'end_date':'2020-02-28'})
@@ -101,3 +108,22 @@ class ExportCSVTest(TestCase):
       self.assertEquals(split_response[0][3], 'Description')
 
       self.assertEquals(split_response[1][1], '2020-02-27')
+
+
+   def test_export_csv_same_date_jp(self):
+      request = self.factory.post('/export/')
+      request.user = self.jp
+      response = export_csv(request, '2020-02-28', '2020-02-28')
+      split_response = response.content.decode('utf-8').rstrip().split('\n')
+
+      for i in range(0, len(split_response)):
+         split_response[i] = split_response[i].split(',')
+
+      self.assertEquals(len(split_response), 2)
+
+      self.assertEquals(split_response[0][0], 'Volunteer')
+      self.assertEquals(split_response[0][1], 'Date')
+      self.assertEquals(split_response[0][2], 'Hours')
+      self.assertEquals(split_response[0][3], 'Description')
+
+      self.assertEquals(split_response[1][1], '2020-02-28')
