@@ -3,9 +3,7 @@
 {% block pageContent %}
 <div class="center-page center-text">
     <div class="form-group"> 
-        <h2 class="main-text m-2">Profile</h2>
-        <form method="post">
-            
+        <h2 class="main-text m-2">Profile</h2>           
             <table class="update-table">
                 <tr>
                     <td class="table-column-1"> First Name: </td>
@@ -21,10 +19,10 @@
                 </tr>
             </table>
             <div class="button-holder custom-margins">
-                <button class="btn btn-primary px-2 m-3" type="submit"> Update</button>
-                <a class="btn btn-primary px-2 m-3" href="" >Cancel</a>
+                <a href="/update-profile/">
+                    <button class="btn btn-primary px-2 m-3">Update Profile</button>
+                </a>
             </div>
-        </form>
         <h4> You have Worked a total of {{ hours }} hours</h4>
     </div>   
 </div>
