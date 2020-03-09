@@ -1,0 +1,5 @@
+language: python
+install: 
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements.txt
+script: cd backend/ && cd slobg_proj/ && python3 manage.py test
