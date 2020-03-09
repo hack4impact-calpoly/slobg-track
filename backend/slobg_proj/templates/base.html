@@ -43,14 +43,27 @@
             {% endif %} -->
             <li class="nav-item">
                 <a class="nav-link" href="/history" style = "color: #FFFFFF">View History</a>
-              </li>
+            </li>
           </ul>
-          <ul class="navbar-nav ml-auto" >
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle mr-auto" style = "color: #FFFFFF" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Options
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'logout' %}">Profile</a>  <!-- replace url once profile page is made -->
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          </ul>
+            <!-- <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" style= "color: #FFFFFF">Profile</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}" style = "color: #FFFFFF">Logout</a>
               </li>
-          </ul>
-        </div>
+            </ul> -->
       </nav>
     <div>
         {% block pageContent %}{% endblock pageContent %}
