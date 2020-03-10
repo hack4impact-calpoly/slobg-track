@@ -13,6 +13,18 @@ class HomePageTest(TestCase):
         response = self.client.get('/', follow=True)
         self.assertEqual(response.status_code, 200)
 
+    def test_redirect_home_to_add_individal_hours(self):
+        response = self.client.get('/add_individual_hours/', follow=True)
+        self.assertEqual(response.redirect_chain[0][1], 302)
+
+    def test_redirect_home_to_history(self):
+        response = self.client.get('/history/', follow=True)
+        self.assertEqual(response.redirect_chain[0][1], 302)
+
+    # def test_redirect_home_to_profile(self):
+    #     response = self.client.get('/profile/', follow=True)
+    #     self.assertEqual(response.redirect_chain[0][1], 302)
+
 class LandingPageTest(TestCase):
     def test_landing_url_to_landing_page_view(self):
         found = resolve('/landing/')
