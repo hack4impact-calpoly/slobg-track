@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .forms import SignUpForm, VolunteerRecordForm, FilterForm
+from .forms import SignUpForm, ProfileForm, VolunteerRecordForm, FilterForm
 from .models import VolunteerRecord
 from django.conf import settings
 # Signup/Login stuff
@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 # Csv stuff
 from django.http import HttpResponse
 import csv
+from django.db.models import Sum
+
 
 # Email Receipt Stuff
 from django.core import mail
@@ -62,26 +64,31 @@ def landing(request):
    return render(request, 'landing.html')
 
 def signup(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('/add_individual_hours')
-        else:
-            print("form not valid")
-    else:
-        form = SignUpForm()
-    return render(request, "signup.html", {"form":form})
+   if request.method == "POST":
+      user_form = SignUpForm(request.POST)
+      # profile_form = ProfileForm(request.POST)
+      if user_form.is_valid():
+         user_form.save()
+         # profile_form.save()
+         username = user_form.cleaned_data.get('username')
+         raw_password = user_form.cleaned_data.get('password1')
+         user = authenticate(username=username, password=raw_password)
+         login(request, user)
+         return redirect('/add_individual_hours')
+      else:
+         print("form not valid")
+   else:
+      user_form = SignUpForm()
+      # profile_form = ProfileForm()
+   return render(request, "signup.html", {
+         "user_form" : user_form,
+         # "profile_form" : profile_form
+      })
 
 
 @login_required
 def home(request):
-   user = request.user
-   return redirect('/add_individual_hours')
+   return redirect('add_individual_hours')
 
 @login_required
 def success(request):
@@ -134,3 +141,32 @@ def history(request):
    else:
       records = VolunteerRecord.objects.filter(owner = current_user)
    return render(request, "history.html", {"records" : records})
+
+
+@login_required
+def profile(request):
+   current_user = request.user
+   hours = VolunteerRecord.objects.filter(
+      owner = current_user).all().aggregate(
+         total_hours=Sum('hours'))['total_hours'] or 0
+   return render(request, "profile.html", {'hours' : hours, 'user': current_user})
+
+@login_required
+def update_profile(request):
+   if request.method == "POST":
+      user_form = SignUpForm(request.POST, instance=request.user)
+      profile_form = ProfileForm(request.POST, instance=request.user.profile)
+      if user_form.is_valid() and profile_form.is_valid():
+         user_form.save()
+         profile_form.save()
+         print("Profile successfully updated.")
+         return redirect('/profile')
+      else:
+         print("user_form or profile_form not valid.")
+   else:
+        user_form = SignUpForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+   return render(request, 'update_profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })

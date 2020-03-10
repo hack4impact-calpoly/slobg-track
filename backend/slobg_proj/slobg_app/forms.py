@@ -1,4 +1,4 @@
-from .models import VolunteerRecord
+from .models import VolunteerRecord, Profile
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -13,15 +13,31 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('phone', 'birth_date', 'medical_conditions', 'areas_of_interest', 
+                'volunteer_waiver_and_release', 'esignature_date',)
+        widgets = {
+          'medical_conditions': forms.Textarea(attrs={'rows':4, 'cols':20}),
+          'areas_of_interest': forms.Textarea(attrs={'rows':4, 'cols':20}),
+        }
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+class NumberInput(forms.NumberInput):
+    input_type = 'number'
 
 class VolunteerRecordForm(forms.ModelForm):
     class Meta:
         model = VolunteerRecord
         fields = ('activity', 'hours', 'date', 'supervisor')
-        widgets = {'date' : DateInput(attrs={'id':'dateTimePicker'})}
+        hours = forms.FloatField(min_value=0)
+        widgets = {
+            'date' : DateInput(attrs={'id':'dateTimePicker'}),
+            'hours' : NumberInput(attrs={'id': 'form_hours', 'step': "0.25"})
+        }
 
 
 class FilterForm(forms.Form):
