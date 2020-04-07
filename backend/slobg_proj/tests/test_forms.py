@@ -6,12 +6,12 @@ from django.test import TestCase
 
 class VolunteerRecordFormTest(TestCase):
     def test_valid_Volunteer(self):
-        form = VolunteerRecordForm(data ={'activity': "planting", 'hours':5, 'date':"05/09/2020", 'supervisor':"Joscelyn"})
+        form = VolunteerRecordForm(data ={'activity': "Outreach", 'hours':5, 'date':"05/09/2020", 'supervisor':"Joscelyn"})
         self.assertTrue(form.is_valid())
-        self.assertTrue(form.data['activity'] == "planting")
-        self.assertTrue(form.data['activity'] == "planting")
-        self.assertTrue(form.data['activity'] == "planting")
-        self.assertTrue(form.data['activity'] == "planting")
+        self.assertTrue(form.data['activity'] == "Outreach")
+        self.assertTrue(form.data['hours'] == 5)
+        self.assertTrue(form.data['date'] == "05/09/2020")
+        self.assertTrue(form.data['supervisor'] == "Joscelyn")
 
 class FilterFormTest(TestCase):
     def test_start_date(self):
