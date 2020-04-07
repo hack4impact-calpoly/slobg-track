@@ -5,8 +5,13 @@ from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 
 
+ACTIVITY_CHOICES = (('Maintenance', 'Maintenance'), 
+					('Administration', 'Administration'), 
+					('Outreach', 'Outreach'), 
+					('Education', 'Education'))
+
 class VolunteerRecord(models.Model):
-	activity = models.CharField(max_length=256, blank=False)
+	activity = models.CharField(max_length=256, blank=False, choices=ACTIVITY_CHOICES)
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)
