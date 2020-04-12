@@ -66,24 +66,28 @@ def landing(request):
 
 def signup(request):
    if request.method == "POST":
-      user_form = SignUpForm(request.POST)
-      # profile_form = ProfileForm(request.POST)
-      if user_form.is_valid():
-         user_form.save()
-         # profile_form.save()
-         username = user_form.cleaned_data.get('username')
-         raw_password = user_form.cleaned_data.get('password1')
-         user = authenticate(username=username, password=raw_password)
+      form = SignUpForm(request.POST)
+      if form.is_valid():
+         user = form.save()
+         user.refresh_from_db() 
+         #load profile
+         user.profile.phone = form.cleaned_data.get('phone')
+         user.profile.birth_date = form.cleaned_data.get('birth_date')
+         user.profile.medical_conditions = form.cleaned_data.get('medical_conditions')
+         user.profile.areas_of_interest = form.cleaned_data.get('areas_of_interest')
+         user.profile.volunteer_waiver_and_release = form.cleaned_data.get('volunteer_waiver_and_release')
+         user.profile.esignature_date = form.cleaned_data.get('esignature_date')
+         user.save()
+         raw_password = form.cleaned_data.get('password1')
+         user = authenticate(username=user.username, password=raw_password)
          login(request, user)
          return redirect('/add_individual_hours')
       else:
          print("form not valid")
    else:
       user_form = SignUpForm()
-      # profile_form = ProfileForm()
    return render(request, "signup.html", {
          "user_form" : user_form,
-         # "profile_form" : profile_form
       })
 
 
