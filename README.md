@@ -21,7 +21,8 @@ What things you need to install the software and how to install them
 #### Installing
 A step by step series of examples that tell you how to get a development environment running.
 1. Clone the repository
-``` git clone https://github.com/hack4impact-calpoly/slobg-track.git ```
+
+    ``` git clone https://github.com/hack4impact-calpoly/slobg-track.git ```
 
 End with an example of getting some data out of the system or using it for a little demo.
 
