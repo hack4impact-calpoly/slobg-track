@@ -4,11 +4,11 @@
 
 ## Table of Contents
 - [1. Getting Started (Developers)](#1-getting-started-developers)
-- [Prerequisites](#prerequisites)
-- [Installing](#installing)
-- [Running the Tests](#running-the-tests)
-- [Deployment](#deployment)
-- [Built With](#built-with)
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+  - [Running the Tests](#running-the-tests)
+  - [Deployment](#deployment)
+  - [Built With](#built-with)
 - [2. Getting Started (Users)](#2-getting-started-users)
 
 ### 1. Getting Started (Developers)
