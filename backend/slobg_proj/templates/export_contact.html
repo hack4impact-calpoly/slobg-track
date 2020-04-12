@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pageContent %}
+
+<div class="center-page center-text">
+    <div class="form-group">
+        <h2 class="form-head">Export Volunteer Contact Info</h2>
+        <h3 class="form-head">Filter by Time Period</h3>
+    </div>
+    <form method="POST" id="form"> {% csrf_token %}
+        <div class="align-fields-general">
+            {% for field in form %}
+            <p>
+                <div class="align-labels">
+                    {{ field.label_tag }} <br/>
+                </div>
+                <div class="align-fields" id='datetimepicker1'>
+                    {{ field }} 
+                </div>
+            </p>
+            {% endfor %}
+        </div>
+        <div class="button-holder custom-margins"></div>
+            <button class="btn wide-btn btn-primary" type="submit" form="form" href="{% url 'export_csv' %}">Export CSV</button>
+        </div>
+    </form>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+{% endblock pageContent%}

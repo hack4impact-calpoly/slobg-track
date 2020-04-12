@@ -28,5 +28,6 @@ urlpatterns = [
     path('export/', views.export_csv, name='export_csv'),
     path('success/', views.success, name="success"),
     path('profile/', views.profile, name="profile"),
-    path('update-profile/', views.update_profile, name="update_profile")
+    path('update-profile/', views.update_profile, name="update_profile"),
+    #path('export_contact/', views.export_contact, name='export_contact')
 ]

@@ -44,6 +44,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/history" style = "color: #FFFFFF">View History</a>
             </li>
+            {% if user.is_superuser %}
+              <li class="nav-item">
+                <a class="nav-link" href="/export_contact" style = "color: #FFFFFF">Export Contacts</a>
+              </li>
+            {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item dropdown">
