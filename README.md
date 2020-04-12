@@ -3,13 +3,13 @@
 ### A volunteer hour tracker made for SLO Botanical Garden.
 
 ## Table of Contents
-1. [Getting Started (Developers)](###Getting-Started-(Developers))
-    - [Prerequisites](####Prerequisites)
-    - [Installing](####Installing)
-    - [Running the Tests](####Running-the-Tests)
-    - [Deployment](####Deployment)
-    - [Built With](####Built-With)
-2. [Getting Started (Users)](###Getting-Started-(Users))
+- [1. Getting Started (Developers)](#1-getting-started-developers)
+- [Prerequisites](#prerequisites)
+- [Installing](#installing)
+- [Running the Tests](#running-the-tests)
+- [Deployment](#deployment)
+- [Built With](#built-with)
+- [2. Getting Started (Users)](#2-getting-started-users)
 
 ### 1. Getting Started (Developers)
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
