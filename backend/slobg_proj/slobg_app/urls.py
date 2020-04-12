@@ -29,5 +29,5 @@ urlpatterns = [
     path('success/', views.success, name="success"),
     path('profile/', views.profile, name="profile"),
     path('update-profile/', views.update_profile, name="update_profile"),
-    #path('export_contact/', views.export_contact, name='export_contact')
+    path('export_contact/', views.export_contact, name='export_contact')
 ]

@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import csv
 from django.db.models import Sum
+from django.contrib.auth.models import User
 
 
 # Email Receipt Stuff
@@ -21,11 +22,9 @@ from django.utils.html import strip_tags
 
 #Export to csv function
 def export_csv(request, start_date, end_date):
-   print(request)
    response = HttpResponse(content_type='text/csv')
    response['Content-Disposition'] = 'attachment; filename="volunteer_history: {} to {}.csv"'.format(start_date, end_date)
-   print(start_date)
-   print(end_date)
+
    writer = csv.writer(response)
    writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor'])
 
@@ -60,7 +59,42 @@ def export(request):
       form = FilterForm()
    return render(request, 'export.html', {'form':form})
 
+@login_required
+def export_contact(request):
+   if request.method == "POST":
+      form = FilterForm(request.POST)
+      if form.is_valid():
+         start = form.cleaned_data['start_date']
+         end = form.cleaned_data['end_date']
+         response = export_contacts(request, start, end)
+         return response
+      else:
+         print("form not valid")
+   else:
+      form = FilterForm()
+   return render(request, 'export_contact.html', {'form':form})
 
+def export_contacts(request, start_date, end_date):
+   print(request)
+   response = HttpResponse(content_type='text/csv')
+   response['Content-Disposition'] = 'attachment; filename="volunteer_contacts: {} to {}.csv"'.format(start_date, end_date)
+
+   writer = csv.writer(response)
+   writer.writerow(['emails'])
+
+   if(request.user.is_superuser):
+      users = User.objects.all().filter(date_joined__range=[start_date, end_date])
+   else:
+      users = User.objects.filter(owner=request.user, date_joined__range=[start_date, end_date])
+
+   for user in users:
+      writer.writerow([user.email])
+   
+   return response
+
+
+
+   
 def landing(request):
    return render(request, 'landing.html')
 
