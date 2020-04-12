@@ -71,6 +71,11 @@ class Profile(models.Model):
 	emergency_contact_relationship = models.TextField(max_length=100, blank=True)
 	emergency_contact_phone_number = models.TextField(max_length=100, blank=True)
 
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

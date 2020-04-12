@@ -4,14 +4,32 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class NumberInput(forms.NumberInput):
+    input_type = 'number'
+
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
+    # Profile Fields
+    phone = forms.CharField(max_length=30, required=True, help_text='Required.')
+    birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD', 
+                                    widget=DateInput(attrs={'id':'dateTimePicker'}))
+    medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
+    areas_of_interest = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
+    volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.')
+    esignature_date = birth_date
+
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 
+        'phone','birth_date', 'medical_conditions', 'areas_of_interest', 
+                'volunteer_waiver_and_release', 'esignature_date',)
+        
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -22,12 +40,6 @@ class ProfileForm(forms.ModelForm):
           'medical_conditions': forms.Textarea(attrs={'rows':4, 'cols':20}),
           'areas_of_interest': forms.Textarea(attrs={'rows':4, 'cols':20}),
         }
-
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-class NumberInput(forms.NumberInput):
-    input_type = 'number'
 
 class VolunteerRecordForm(forms.ModelForm):
     class Meta:
