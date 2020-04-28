@@ -5,36 +5,41 @@
 {% endblock pageHeader%}
 
 {% block pageContent %}
-<div class="center-page center-text">
-  <img class="inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="214px" height="142px">
-  <h2 class="main-text m-2">Sign Up Below</h2>
-  <form method="post">
-    {% csrf_token %}
-    <div class="align-fields-general">
-      {% for field in user_form %}
-        <p>
-          <div class="align-fields">
-            <div class="align-labels">
-              {{ field.label_tag }} <br/>
+<body>
+  <div class="center-page center-text">
+    <img class="inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="214px" height="142px">
+    <h2 class="main-text m-2">Sign Up Below</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="align-fields-general">
+        {% for field in user_form %}
+          <p>
+            <div class="align-fields">
+              <div class="align-labels">
+                {{ field.label_tag }} <br/>
+              </div>
+              <div class="align-labels">
+                {{ field }} 
+              </div>
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
             </div>
-            <div class="align-labels">
-              {{ field }} 
-            </div>
-            {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
-            {% endfor %}
-          </div>
-        </p>
-      {% endfor %}
-      
-    </div>
-    <div class="button-holder custom-margins">
-      <button class="btn wide-btn-2 btn-primary" type="submit">Sign up</button>
-    </div>
-  </form>
-</div>
-  
-  <p class="center-text">
-    Already Have an Account?<a class="btn  px-1 m-1" href="/login/" >Sign In.</a>
-  </p>
+          </p>
+        {% endfor %}
+        
+      </div>
+      <div class="button-holder custom-margins">
+        <button class="btn wide-btn-2 btn-primary" type="submit">Sign up</button>
+      </div>
+    </form>
+    <p class="center-text">
+        Already Have an Account?<a class="a-btn px-1 m-1" href="/login/" >Sign In.</a>
+      </p>
+  </div>
+  <footer>
+      Project made possible with 
+      <a class="medium-text" href="https://hack4impact.org//">hack4impact</a>
+  </footer>
+</body>
 {% endblock %}
