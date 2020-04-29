@@ -21,7 +21,7 @@ class SignUpForm(UserCreationForm):
                                     widget=DateInput(attrs={'id':'dateTimePicker'}))
     medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
     areas_of_interest = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
-    volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.')
+    volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
 
     class Meta:
