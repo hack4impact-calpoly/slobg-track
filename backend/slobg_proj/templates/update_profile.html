@@ -21,26 +21,8 @@
          </div>
       </p>
       {% endfor %}
-         {% for field in profile_form %}
-         <p>
-            <div class="align-fields">
-               <div class="align-labels">
-               {{ field.label_tag }} <br/>
-               </div>
-               <div class="align-labels">
-               {{ field.help_text }} 
-               </div>
-               <div class="align-labels">
-               {{ field }} 
-               </div>
-               {% for error in field.errors %}
-               <p style="color: red">{{ error }}</p>
-               {% endfor %}
-            </div>
-         </p>
-         {% endfor %}
-            <button class="btn btn-primary px-2 m-3" type="Submit">Save Changes</button>
-            </form>
+      <button class="btn btn-primary px-2 m-3" type="Submit">Save Changes</button>
+      </form>
     </div>   
 </div>
 {% endblock pageContent%}
