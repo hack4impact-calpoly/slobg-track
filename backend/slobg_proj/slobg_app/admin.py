@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import VolunteerRecord, Profile
+from .models import VolunteerRecord, Profile, ActivityChoice
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
@@ -23,3 +23,4 @@ admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
 admin.site.register(VolunteerRecord)
+admin.site.register(ActivityChoice)

@@ -30,6 +30,12 @@ class GroupVolunteerModel(models.Model):
 	group_name = models.CharField(max_length=200, default="")
 	email = models.EmailField(max_length=254)
 
+
+class ActivityChoice(models.Model):
+	description = models.CharField(max_length=300)
+	def __str__(self):
+		return self.description
+
 # Phone, email, birthdate, medical conditions, 
 # interested areas to volunteer, waiver to sign
 class Profile(models.Model):
@@ -39,12 +45,7 @@ class Profile(models.Model):
 	birth_date = models.DateField(null=True, blank=True)
 	medical_conditions = models.TextField(max_length=512, blank=True,
 		help_text="Please enter any medical conditions you may have. Write N/A if none.")
-	areas_of_interest = models.TextField(max_length=512, blank=True,
-		help_text = """Choose from the following: Education (hours vary), Events (hours vary),
-		Garden Crew (Tuesday 9:00am – 11am), Garden Crew (Thursday 10:00am – 12pm),
-		Library, Tuesday (9:00am - 12pm), Maintenance (Hours vary), Marketing/Publicity (Hours vary)
-		Membership (Hours vary), Office Assistant (Hours vary), Plant Records (Tuesday 9:00am - 11am)
-		Propagation Crew (Tuesday 9:00am – 11am), Volunteer Program (Hours vary)""")
+	areas_of_interest = models.ManyToManyField(ActivityChoice)
 	volunteer_waiver_and_release = models.CharField(max_length=50, blank=True, 
 		help_text="""San Luis Obispo Botanical Garden (SLOBG) is not responsible for 
 		an injury or accident that may occur during my participation as a volunteer in 
