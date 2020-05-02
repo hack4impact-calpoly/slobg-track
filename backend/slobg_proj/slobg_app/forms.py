@@ -1,4 +1,4 @@
-from .models import VolunteerRecord, Profile
+from .models import VolunteerRecord, Profile, ActivityChoice
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -20,7 +20,7 @@ class SignUpForm(UserCreationForm):
     birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD', 
                                     widget=DateInput(attrs={'id':'dateTimePicker'}))
     medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
-    areas_of_interest = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
+    areas_of_interest = forms.ModelMultipleChoiceField(queryset=ActivityChoice.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
     volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
 
@@ -32,13 +32,19 @@ class SignUpForm(UserCreationForm):
         
 
 class ProfileForm(forms.ModelForm):
+    phone = forms.CharField(max_length=30, required=True, help_text='Required.')
+    birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD', 
+                                    widget=DateInput(attrs={'id':'dateTimePicker'}))
+    medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
+    areas_of_interest = forms.ModelMultipleChoiceField(queryset=ActivityChoice.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
+    volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
+    esignature_date = birth_date
     class Meta:
         model = Profile
         fields = ('phone', 'birth_date', 'medical_conditions', 'areas_of_interest', 
                 'volunteer_waiver_and_release', 'esignature_date',)
         widgets = {
           'medical_conditions': forms.Textarea(attrs={'rows':4, 'cols':20}),
-          'areas_of_interest': forms.Textarea(attrs={'rows':4, 'cols':20}),
         }
 
 class VolunteerRecordForm(forms.ModelForm):
