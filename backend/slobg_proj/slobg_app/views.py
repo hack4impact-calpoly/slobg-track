@@ -179,6 +179,10 @@ def history(request):
       records = VolunteerRecord.objects.all()
    else:
       records = VolunteerRecord.objects.filter(owner = current_user)
+   if records.count() > 10:
+      records = records[records.count() - 10:]
+   records = list(records)
+   records.reverse()
    return render(request, "history.html", {"records" : records})
 
 
