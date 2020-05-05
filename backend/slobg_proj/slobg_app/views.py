@@ -179,11 +179,12 @@ def history(request):
       records = VolunteerRecord.objects.all()
    else:
       records = VolunteerRecord.objects.filter(owner = current_user)
+   running_total = sum(rec.hours for rec in records)
    if records.count() > 10:
       records = records[records.count() - 10:]
    records = list(records)
    records.reverse()
-   return render(request, "history.html", {"records" : records})
+   return render(request, "history.html", {"records" : records, "running_total":running_total})
 
 
 @login_required
