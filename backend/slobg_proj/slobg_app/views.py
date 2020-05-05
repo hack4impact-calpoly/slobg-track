@@ -183,7 +183,7 @@ def history(request):
    if records.count() > 10:
       records = records[records.count() - 10:]
    records = list(records)
-   records.reverse()
+   records.sort(key=lambda rec: rec.date, reverse=True)
    return render(request, "history.html", {"records" : records, "running_total":running_total})
 
 

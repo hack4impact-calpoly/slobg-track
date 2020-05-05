@@ -8,13 +8,16 @@ from django.core.exceptions import ObjectDoesNotExist
 ACTIVITY_CHOICES = (('Maintenance', 'Maintenance'), 
 					('Administration', 'Administration'), 
 					('Outreach', 'Outreach'), 
-					('Education', 'Education'))
+					('Education', 'Education'),
+					('Propagation', 'Propagation'),
+					('Other', 'Other'))
 
 class VolunteerRecord(models.Model):
 	activity = models.CharField(max_length=256, blank=False, choices=ACTIVITY_CHOICES)
 	hours = models.FloatField(blank=False)
 	date = models.DateField(auto_now=False, auto_now_add=False, blank=False)
 	supervisor = models.CharField(max_length=256, blank=False)
+	description = models.CharField(max_length=1000, blank=True, default='')
 	owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
 	def __str__(self):
