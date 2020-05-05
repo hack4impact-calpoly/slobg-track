@@ -156,7 +156,7 @@ def add_individual_hours(request):
          print("form not valid")
    else:
       form = VolunteerRecordForm()
-      
+
    return render(request, "add_individual_hours.html", {"form": form})
 
 
@@ -183,7 +183,7 @@ def history(request):
    if records.count() > 10:
       records = records[records.count() - 10:]
    records = list(records)
-   records.reverse()
+   records.sort(key=lambda rec: rec.date, reverse=True)
    return render(request, "history.html", {"records" : records, "running_total":running_total})
 
 
