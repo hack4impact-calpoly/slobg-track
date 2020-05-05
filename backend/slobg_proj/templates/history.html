@@ -31,6 +31,11 @@
         {% endfor %}
     </tbody>
 </table>
+<br/>
+{% if user.is_staff == False %}
+<h3>Total Hours Worked: {{  running_total  }}</h3>
+{% endif %}
+
 
 <a class="btn" href="{% url 'export' %}">
     Export Records to CSV
