@@ -31,7 +31,11 @@
             </tr>
             <tr>
                 <td class="table-column-1 pr-4"> Areas of Interest: </td>
-                <td class="table-column-2"> {{  user.profile.areas_of_interest  }} </td>
+                <td class="table-column-2">
+                    {% for activity in user.profile.areas_of_interest.all %}
+                        {{  activity  }}{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <td class="table-column-1 pr-4"> Waiver Signed Date: </td>
