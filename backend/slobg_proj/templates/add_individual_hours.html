@@ -8,15 +8,18 @@
     <form method="POST" id="form"> {% csrf_token %}
         <div class="align-fields-general">
             {% for field in form %}
+
             <p>
                 <div class="align-labels">
                     {{ field.label_tag }} <br/>
                 </div>
-                <div class="align-fields" id='form_hours' id='datetimepicker1'>
+                <div class="align-fields">
                     {{ field }} 
                 </div>
             </p>
+
             {% endfor %}
+
         </div>
         <div class="button-holder custom-margins"></div>
             <button class="btn wide-btn btn-primary" type="submit" form="form">Submit</button>
@@ -29,4 +32,5 @@
         $('#datetimepicker1').datetimepicker();
     });
 </script>
+
 {% endblock pageContent%}

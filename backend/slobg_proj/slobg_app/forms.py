@@ -50,11 +50,12 @@ class ProfileForm(forms.ModelForm):
 class VolunteerRecordForm(forms.ModelForm):
     class Meta:
         model = VolunteerRecord
-        fields = ('activity', 'hours', 'date', 'supervisor')
+        fields = ('activity', 'hours', 'date', 'supervisor', 'description')
         hours = forms.FloatField(min_value=0)
         widgets = {
-            'date' : DateInput(attrs={'id':'dateTimePicker'}),
-            'hours' : NumberInput(attrs={'id': 'form_hours', 'step': "0.25"})
+            'date' : DateInput(attrs={'id': 'dateTimePicker'}),
+            'hours' : NumberInput(attrs={'id': 'form_hours', 'step': "0.25"}),
+            'description' : forms.Textarea(attrs={'id': 'form_desc'})
         }
 
 

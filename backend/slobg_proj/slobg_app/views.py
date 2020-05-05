@@ -156,7 +156,7 @@ def add_individual_hours(request):
          print("form not valid")
    else:
       form = VolunteerRecordForm()
-
+      
    return render(request, "add_individual_hours.html", {"form": form})
 
 
