@@ -55,7 +55,7 @@ class VolunteerRecordForm(forms.ModelForm):
         widgets = {
             'date' : DateInput(attrs={'id': 'dateTimePicker'}),
             'hours' : NumberInput(attrs={'id': 'form_hours', 'step': "0.25"}),
-            'description' : forms.Textarea(attrs={'id': 'form_desc'})
+            'description' : forms.Textarea(attrs={'id': 'form_desc','rows':4, 'cols':20})
         }
 
 
