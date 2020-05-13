@@ -1,17 +1,16 @@
-# SLO Botanical Garden Track4Impact
+# SLO Botanical Garden Volunteer Hour Tracker
 [![Build Status](https://travis-ci.com/hack4impact-calpoly/slobg-track.svg?branch=master)](https://travis-ci.com/hack4impact-calpoly/slobg-track)
-### A volunteer hour tracker made for SLO Botanical Garden.
+### A volunteer hour tracker made for the <a href="https://www.slobg.org/" target="_blank">SLO Botanical Garden nonprofit</a>.
 
 ## Table of Contents
-- [1. Getting Started (Developers)](#1-getting-started-developers)
+- [Getting Started](#1-getting-started-developers)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
   - [Running the Tests](#running-the-tests)
   - [Deployment](#deployment)
   - [Built With](#built-with)
-- [2. Getting Started (Users)](#2-getting-started-users)
 
-### 1. Getting Started (Developers)
+### Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 #### Prerequisites
