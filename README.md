@@ -5,14 +5,26 @@
 ![User View](https://github.com/eric-newcomer/slobg-track/blob/master/backend/slobg_proj/slobg_app/static/slobg_app/img/user-view.png)
 
 ## Table of Contents
-- [Getting Started](#1-getting-started-developers)
+- [Overview](#overview)
+  - [Purpose](#purpose)
+  - [Team](#team)
+- [Getting Started for Developers](#getting-started-for-developers)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
   - [Running the Tests](#running-the-tests)
   - [Deployment](#deployment)
   - [Built With](#built-with)
 
-### Getting Started
+### Overview
+The following sections contain a summary of the project, its purpose, who it serves, and who created it.
+
+#### Purpose
+Purpose section here.
+
+#### Team
+Team section here.
+
+### Getting Started for Developers
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 #### Prerequisites
