@@ -43,7 +43,7 @@ The SLO Botanical Garden project team consisted of 5 Cal Poly Computer Science s
 ```cd slobg-track/``
 
 #### Install requirements
-(0. Install Python if you don't have it for some reason)
+0. [Install Python](https://www.python.org/downloads/) (if you don't have it for some reason)
 1. Clone the repo
 2. [Install pip](https://pip.pypa.io/en/stable/installing/)
 3. [Install Django](https://docs.djangoproject.com/en/3.0/topics/install/)
