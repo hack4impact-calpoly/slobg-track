@@ -26,7 +26,7 @@
     <!-- NAVBAR HERE -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #637039;">
         <img class=" nav-bar-image" src="{% static 'slobg_app/img/slobg_logo.png' %}" width="100px" height="68px">
-        <a class="navbar-brand" href="/add_individual_hours" style = "color: #FFFFFF">track4impact</a>
+        <a class="navbar-brand" href="/add_individual_hours" style = "color: #FFFFFF">Volunteer Hour Tracker</a>
         <button class=" inverted navbar-toggler" style="margin-top: -20px" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,11 +36,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/add_individual_hours" style = "color: #FFFFFF">Add Individual Hours<span class="sr-only">(current)</span></a>
             </li>
-            <!-- {% if user.is_staff %}
-              <li class="nav-item">
-                <a class="nav-link" href="/add_group_hours" style = "color: #FFFFFF">Add Group Hours<span class="sr-only">(current)</span></a>
-              </li>
-            {% endif %} -->
             <li class="nav-item">
                 <a class="nav-link" href="/history" style = "color: #FFFFFF">View History</a>
             </li>
@@ -53,7 +48,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle mr-auto" style = "color: #FFFFFF; left:0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Options
+              Welcome, {{ user.get_full_name }}!
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>

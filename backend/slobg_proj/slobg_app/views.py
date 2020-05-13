@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .forms import SignUpForm, ProfileForm, VolunteerRecordForm, FilterForm
-from .models import VolunteerRecord
+from .models import VolunteerRecord, ActivityChoice
 from django.conf import settings
 # Signup/Login stuff
 from django.contrib.auth import login, authenticate
@@ -108,7 +108,9 @@ def signup(request):
          user.profile.phone = form.cleaned_data.get('phone')
          user.profile.birth_date = form.cleaned_data.get('birth_date')
          user.profile.medical_conditions = form.cleaned_data.get('medical_conditions')
-         user.profile.areas_of_interest = form.cleaned_data.get('areas_of_interest')
+         areas_of_interest = form.cleaned_data.get('areas_of_interest')
+         # ActivityChoice.objects.create()
+         user.profile.areas_of_interest.add(*areas_of_interest)
          user.profile.volunteer_waiver_and_release = form.cleaned_data.get('volunteer_waiver_and_release')
          user.profile.esignature_date = form.cleaned_data.get('esignature_date')
          user.save()
@@ -119,9 +121,9 @@ def signup(request):
       else:
          print("form not valid")
    else:
-      user_form = SignUpForm()
+      form = SignUpForm()
    return render(request, "signup.html", {
-         "user_form" : user_form,
+         "user_form" : form,
       })
 
 
@@ -157,7 +159,7 @@ def add_individual_hours(request):
    else:
       form = VolunteerRecordForm()
 
-   return render(request, "add_individual_hours.html", {"form": form})
+   return render(request, "add_individual_hours.html", {"form": form, "user": request.user})
 
 
 

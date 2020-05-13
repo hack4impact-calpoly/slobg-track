@@ -11,6 +11,11 @@ class NumberInput(forms.NumberInput):
     input_type = 'number'
 
 class SignUpForm(UserCreationForm):
+    TRUE_FALSE_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No')
+    )
+
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
@@ -21,13 +26,17 @@ class SignUpForm(UserCreationForm):
                                     widget=DateInput(attrs={'id':'dateTimePicker'}))
     medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
     areas_of_interest = forms.ModelMultipleChoiceField(queryset=ActivityChoice.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
+    photo_permission = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Permission to photograph/video", 
+                              initial='', widget=forms.Select())
+    emergency_contact = forms.CharField(label="Emergency Contact Name", required=True)
+    emergency_contact_phone_number = forms.CharField(label="Emergency Contact Phone Number", required=True)
     volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 
-        'phone','birth_date', 'medical_conditions', 'areas_of_interest', 
+        'phone','birth_date', 'medical_conditions', 'areas_of_interest', 'photo_permission', 'emergency_contact', 'emergency_contact_phone_number',
                 'volunteer_waiver_and_release', 'esignature_date',)
         
 

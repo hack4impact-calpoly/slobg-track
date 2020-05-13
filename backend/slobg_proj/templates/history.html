@@ -36,9 +36,8 @@
 <h3>Total Hours Worked: {{  running_total  }}</h3>
 {% endif %}
 
-
 <a class="a-btn" href="{% url 'export' %}">
-    Export Records to CSV
+    <button class="btn wide-btn btn-primary" type="submit" form="form">Export Records to CSV</button>
 </a>
 </html>
 

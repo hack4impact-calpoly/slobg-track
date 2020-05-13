@@ -17,6 +17,10 @@
             <div class="align-fields">
               <div class="align-labels">
                 {{ field.label_tag }} <br/>
+                {% if "waiver" in field.label_tag  %}
+                <a href="https://www.slobg.org/volunteerwaiver" target="_blank">Link to waiver</a> 
+                <br />
+                {% endif %}
               </div>
               <div class="align-labels">
                 {{ field }} 
