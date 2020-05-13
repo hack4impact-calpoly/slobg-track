@@ -9,14 +9,11 @@
   - [Purpose](#purpose)
   - [Team](#team)
 - [Getting Started for Developers](#getting-started-for-developers)
-  - [Prerequisites](#prerequisites)
-  - [Installing](#installing)
-  - [Running the Tests](#running-the-tests)
-  - [Deployment](#deployment)
-  - [Built With](#built-with)
+  - [Clone the repository](#clone-the-repository)
+  - [Install Requirements](#install-requirements)
+  - [Run the App](#run-the-app)
 
 ### Overview
-The following sections contain a summary of the project, its purpose, who it serves, and who created it.
 
 #### Purpose
 The purpose of this application was to improve the volunteer tracking process at the SLO Botanical Garden nonprofit. Previously, volunteer information was written down and manually inputted into spreadsheets by nonprofit supervisors. In order to streamline this arduous task, the team built a volunteer management system that allows volunteers to record their hours and view their volunteer history, all while allowing nonprofit supervisors to keep this information and filter/export it when necessary. 
@@ -40,28 +37,20 @@ The SLO Botanical Garden project team consisted of 5 Cal Poly Computer Science s
 - Cole Perry - Software Developer
 
 ### Getting Started for Developers
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-#### Prerequisites
-What things you need to install the software and how to install them
-1. [How to Install **Django**](https://docs.djangoproject.com/en/3.0/topics/install/)
+#### Clone the repository
+``` git clone https://github.com/hack4impact-calpoly/slobg-track.git ```
+```cd slobg-track/``
 
-#### Installing
-A step by step series of examples that tell you how to get a development environment running.
-1. Clone the repository
+#### Install requirements
+(0. Install Python if you don't have it for some reason)
+1. Clone the repo
+2. [Install pip](https://pip.pypa.io/en/stable/installing/)
+3. [Install Django](https://docs.djangoproject.com/en/3.0/topics/install/)
+4. Install all project packages using `pip install -r requirements.txt` (make sure you are in the project root folder).
 
-    ``` git clone https://github.com/hack4impact-calpoly/slobg-track.git ```
+#### Run the app
+1. ```cd backend/slobg_proj/```
+2. ```python manage.py runserver``` or ```python3 manage.py runserver``` depending on your Python version.
+3. Head over to http://127.0.0.1:8000/ to see the app!
 
-End with an example of getting some data out of the system or using it for a little demo.
-
-#### Running the Tests
-Explain how to run the automated tests for this system
-
-``` Give an example ```
-
-#### Deployment
-Add additional notes about how to deploy this on a live system (i.e. Heroku)
-
-#### Built With
-* [Django](https://www.djangoproject.com/) - The web framework used
-* [Bootstrap](https://getbootstrap.com/) - CSS styling
