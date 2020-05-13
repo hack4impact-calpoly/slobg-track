@@ -4,6 +4,7 @@ table, th, td{
     margin-left: auto;
     margin-right: auto;
     overflow: auto;
+    background-color: white;
 }
 
 th{
@@ -13,6 +14,7 @@ th{
 h1{
     text-align: center;
     font-size: vw;
+    color: white;
 }
 
 .custom{
@@ -21,4 +23,5 @@ h1{
 h3{
     text-align: center;
     font-size: vw;
+    color: white;
 }

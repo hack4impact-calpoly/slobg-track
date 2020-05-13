@@ -3,6 +3,9 @@
 {% block pageContent %}
 <div class="center-page center-text">
     <div class="form-group"> 
+        <img class=" nav-bar-image inverted" src="{% static 'slobg_app/img/slobg_logo.png' %}" height="150vh">
+        <h1 class="hero">Volunteer Hour Tracker</h2>
+            <br />
         <h2 class="main-text m-2">Track Individual Hours</h2>
     </div>   
     <form method="POST" id="form"> {% csrf_token %}
