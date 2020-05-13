@@ -17,6 +17,9 @@ class MyTests(TestCase):
             'birth_date' : "1998-10-23",
             'medical_conditions' : "This is a test description. This is a test description. This is a test description.",
             # 'areas_of_interest' : "This is a test description. This is a test description. This is a test description.",
+            'photo_permission': True,
+            'emergency_contact': "Firstname Lastname",
+            'emergency_contact_phone_number': "1111111111",
             'volunteer_waiver_and_release' : "Test Signature",
             'esignature_date' : '2020-04-12',
         }
