@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/hack4impact-calpoly/slobg-track.svg?branch=master)](https://travis-ci.com/hack4impact-calpoly/slobg-track)
 ### A volunteer hour tracker made for the <a href="https://www.slobg.org/" target="_blank">SLO Botanical Garden nonprofit</a>.
 
-![User View]()
+![User View](https://github.com/eric-newcomer/slobg-track/blob/master/backend/slobg_proj/slobg_app/static/slobg_app/img/user-view.png)
 
 ## Table of Contents
 - [Getting Started](#1-getting-started-developers)
