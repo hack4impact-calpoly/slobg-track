@@ -40,7 +40,7 @@ The SLO Botanical Garden project team consisted of 5 Cal Poly Computer Science s
 
 #### Clone the repository
 ``` git clone https://github.com/hack4impact-calpoly/slobg-track.git ```
-```cd slobg-track/``
+```cd slobg-track/```
 
 #### Install requirements
 0. [Install Python](https://www.python.org/downloads/) (if you don't have it for some reason)
