@@ -25,7 +25,7 @@ The SLO Botanical Garden project team consisted of 5 Cal Poly Computer Science s
   <img src="https://avatars3.githubusercontent.com/u/42504462?s=460&u=fbe279fd5e77ba14a01b2679da9970e49f5a989e&v=4" width="150" />
   <img src="https://avatars1.githubusercontent.com/u/46923410?s=460&u=034ba878c94d529d6bfb445d77c978dc94d197a3&v=4" width="150" /> 
   <img src="https://avatars3.githubusercontent.com/u/20120289?s=460&u=3e6039d2391a2d7ee4e65743a2a366ed3efc16d5&v=4" width="150" />
-  <img src="https://avatars0.githubusercontent.com/u/47136824?s=460&v=4" width="150" />
+  <img src="https://avatars1.githubusercontent.com/u/47136824?s=400&u=30df6b053786b888b9f058e64c07703b01020ea1&v=4" width="150" />
   <img src="https://avatars3.githubusercontent.com/u/15805074?s=400&u=c2a0e7ef773958b28ce01ae19dcdbb1eefcce015&v=4" width="150" />
 </p>
 
