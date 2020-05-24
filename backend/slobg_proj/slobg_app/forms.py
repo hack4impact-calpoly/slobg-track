@@ -41,16 +41,26 @@ class SignUpForm(UserCreationForm):
         
 
 class ProfileForm(forms.ModelForm):
+    TRUE_FALSE_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No')
+    )
+
     phone = forms.CharField(max_length=30, required=True, help_text='Required.')
     birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD', 
                                     widget=DateInput(attrs={'id':'dateTimePicker'}))
     medical_conditions = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':20}))
     areas_of_interest = forms.ModelMultipleChoiceField(queryset=ActivityChoice.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
+    photo_permission = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Permission to photograph/video", 
+                              initial='', widget=forms.Select())
+    emergency_contact = forms.CharField(label="Emergency Contact Name", required=True)
+    emergency_contact_phone_number = forms.CharField(label="Emergency Contact Phone Number", required=True)
     volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
+
     class Meta:
         model = Profile
-        fields = ('phone', 'birth_date', 'medical_conditions', 'areas_of_interest', 
+        fields = ('phone', 'birth_date', 'medical_conditions', 'areas_of_interest', 'photo_permission', 'emergency_contact', 'emergency_contact_phone_number',
                 'volunteer_waiver_and_release', 'esignature_date',)
         widgets = {
           'medical_conditions': forms.Textarea(attrs={'rows':4, 'cols':20}),
