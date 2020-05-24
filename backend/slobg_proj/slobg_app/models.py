@@ -41,6 +41,8 @@ class ActivityChoice(models.Model):
 
 # Phone, email, birthdate, medical conditions, 
 # interested areas to volunteer, waiver to sign
+
+
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	phone = models.CharField(max_length=20, blank=True,
@@ -50,32 +52,11 @@ class Profile(models.Model):
 		help_text="Please enter any medical conditions you may have. Write N/A if none.")
 	areas_of_interest = models.ManyToManyField(ActivityChoice)
 	photo_permission = models.BooleanField(blank=True, default=True)
-	volunteer_waiver_and_release = models.CharField(max_length=50, blank=True, 
-		help_text="""San Luis Obispo Botanical Garden (SLOBG) is not responsible for 
-		an injury or accident that may occur during my participation as a volunteer in 
-		any activity or event. I understand that by signing below I assume full responsibility
-		for any injury or accident that may occur during my participation as a volunteer, and 
-		I hereby release and hold harmless and covenant not to file suit against SLOBG, 
-		employees and any affiliated individuals (“releasees”) associated with my 
-		participation from any loss, liability or claims I may have arising out of my 
-		participation, including personal injury or damage suffered by me or others, whether 
-		caused by falls, contact with participants, conditions of the facility, negligence of 
-		the releasees or otherwise. If I do not agree to these terms, I understand that I am 
-		not allowed to participate in the volunteer program. Please enter your full name below, 
-		verifying you have read the waiver.""")
+	emergency_contact = models.CharField(blank=True, max_length=256)
+	emergency_contact_phone_number = models.CharField(blank=True, max_length=256)
+	volunteer_waiver_and_release = models.CharField(max_length=50, blank=True)
 	esignature_date = models.DateTimeField(null=True, blank=True)
 	
-	# fields for admin only
-	was_interviewed = models.BooleanField(null=True)
-	follow_up_email = models.BooleanField(null=True)
-	distribution_list = models.BooleanField(null=True)
-	background_check = models.BooleanField(null=True)
-	harassment_training = models.BooleanField(null=True)
-	first_aid_cpr = models.BooleanField(null=True)
-	emergency_contact = models.TextField(max_length=100, blank=True, default="")
-	emergency_contact_relationship = models.TextField(max_length=100, blank=True)
-	emergency_contact_phone_number = models.TextField(max_length=100, blank=True, default="")
-
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
