@@ -33,6 +33,7 @@ def export_csv(request, start_date, end_date):
    else:
       records = VolunteerRecord.objects.filter(owner=request.user, date__range=[start_date, end_date])
 
+   records = list(records)
    records.sort(key=lambda rec: rec.date, reverse=True)
 
    for record in records:
