@@ -8,16 +8,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SLOBG_SECRET_KEY', default=os.environ.get('SLOBG_SECRET_KEY'))
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'track4impact.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'slobg-vht.herokuapp.com']
 
 DEFAULT_FROM_EMAIL = 'no-reply@Hack4Impact.com'
 SERVER_EMAIL = 'no-reply@Hack4Impact.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'track4Impact@gmail.com'
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_HOST_PASSWORD = 'ozgxustbnyimabnq'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default=os.environ.get('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default=os.environ.get('EMAIL_HOST_PASSWORD'))
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
