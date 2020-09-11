@@ -5,7 +5,7 @@ from decouple import config
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = config('SLOBG_SECRET_KEY', default=os.environ.get('SLOBG_SECRET_KEY'))
+SECRET_KEY = os.environ.get('SLOBG_SECRET_KEY')
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'track4impact.herokuapp.com']
