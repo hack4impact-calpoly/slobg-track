@@ -122,4 +122,8 @@ dmypy.json
 # DS Store
 .DS_Store
 
+# ENV
+.env
+.travis.yml
+
 # End of https://www.gitignore.io/api/django
