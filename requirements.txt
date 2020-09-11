@@ -2,7 +2,6 @@ autopep8==1.4.4
 bootstrap4==0.1.0
 coverage==5.0.3
 cssselect2==0.2.1
-decouple==0.0.7
 defusedxml==0.6.0
 dj-database-url==0.5.0
 django>=2.2.11
