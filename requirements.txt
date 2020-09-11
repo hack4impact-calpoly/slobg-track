@@ -31,7 +31,7 @@ pydocusign==2.2
 pylint==2.3.1
 Pyphen==0.9.5
 python-dateutil==2.8.0
-python-decouple==0.0.7
+python-decouple==3.3
 python-dotenv==0.11.0
 pytz==2019.1
 reportlab==3.5.21
