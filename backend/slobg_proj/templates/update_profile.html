@@ -87,6 +87,19 @@
       <p>
          <div class="align-fields">
             <div class="align-labels">
+            {{ profile_form.group.label_tag }} <br/>
+            </div>
+            <div class="align-labels">
+            {{ profile_form.group }} 
+            </div>
+            {% for error in profile_form.group.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+         </div>
+      </p>
+      <p>
+         <div class="align-fields">
+            <div class="align-labels">
             {{ profile_form.phone.label_tag }} <br/>
             </div>
             <div class="align-labels">

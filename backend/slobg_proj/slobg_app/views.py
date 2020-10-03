@@ -26,7 +26,7 @@ def export_csv(request, start_date, end_date):
    response['Content-Disposition'] = 'attachment; filename="volunteer_history: {} to {}.csv"'.format(start_date, end_date)
 
    writer = csv.writer(response)
-   writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor'])
+   writer.writerow(['Volunteer', 'Date', 'Hours', 'Description', 'Supervisor', 'Group'])
 
    if(request.user.is_superuser):
       records = VolunteerRecord.objects.all().filter(date__range=[start_date, end_date])
@@ -42,8 +42,8 @@ def export_csv(request, start_date, end_date):
       hours = record.hours
       desc = record.activity
       supervisor = record.supervisor
-
-      writer.writerow((volunteer, date, hours, desc, supervisor))
+      group = record.owner.profile.group
+      writer.writerow((volunteer, date, hours, desc, supervisor, group))
    
    return response
 
