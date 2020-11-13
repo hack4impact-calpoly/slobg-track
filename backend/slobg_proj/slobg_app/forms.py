@@ -32,12 +32,15 @@ class SignUpForm(UserCreationForm):
     emergency_contact_phone_number = forms.CharField(label="Emergency Contact Phone Number", required=True)
     volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
+    group = forms.CharField(max_length=256, required=False, label="Group Name", help_text="Please indicate the group you are working with.")
+
+
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 
-        'phone','birth_date', 'medical_conditions', 'areas_of_interest', 'photo_permission', 'emergency_contact', 'emergency_contact_phone_number',
-                'volunteer_waiver_and_release', 'esignature_date',)
+        'group','phone','birth_date', 'medical_conditions', 'areas_of_interest', 'photo_permission', 'emergency_contact', 'emergency_contact_phone_number',
+                'volunteer_waiver_and_release', 'esignature_date' )
         
 
 class ProfileForm(forms.ModelForm):
@@ -57,11 +60,12 @@ class ProfileForm(forms.ModelForm):
     emergency_contact_phone_number = forms.CharField(label="Emergency Contact Phone Number", required=True)
     volunteer_waiver_and_release = forms.CharField(max_length=50,required=True, help_text='Required.', label="Volunteer Waiver and Release Signature")
     esignature_date = birth_date
+    group = forms.CharField(max_length=256, required=False, label="Group Name", help_text="Please indicate the group you are working with.")
 
     class Meta:
         model = Profile
         fields = ('phone', 'birth_date', 'medical_conditions', 'areas_of_interest', 'photo_permission', 'emergency_contact', 'emergency_contact_phone_number',
-                'volunteer_waiver_and_release', 'esignature_date',)
+                'volunteer_waiver_and_release', 'esignature_date', 'group')
         widgets = {
           'medical_conditions': forms.Textarea(attrs={'rows':4, 'cols':20}),
         }

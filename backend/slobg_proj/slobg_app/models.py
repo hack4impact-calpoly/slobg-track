@@ -56,6 +56,7 @@ class Profile(models.Model):
 	emergency_contact_phone_number = models.CharField(blank=True, max_length=256)
 	volunteer_waiver_and_release = models.CharField(max_length=50, blank=True)
 	esignature_date = models.DateTimeField(null=True, blank=True)
+	group = models.CharField(max_length=256, blank=True)
 	
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
