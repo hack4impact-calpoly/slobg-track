@@ -126,4 +126,11 @@ dmypy.json
 .env
 .travis.yml
 
+# Virtual environments
+venv/
+
+# Workspace settings
+launch.json
+settings.json
+
 # End of https://www.gitignore.io/api/django
