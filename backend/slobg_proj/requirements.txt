@@ -29,7 +29,7 @@ Pyphen==0.9.5
 python-dateutil==2.8.0
 python-decouple==3.3
 pytz==2019.1
-reportlab==3.5.21
+reportlab==3.5.55
 requests==2.21.0
 six==1.12.0
 soupsieve==1.9.1
